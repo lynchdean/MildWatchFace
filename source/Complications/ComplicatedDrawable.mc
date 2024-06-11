@@ -82,11 +82,14 @@ module Complicated {
                     var label = (model as LabelModel).label;
 
                     // Draw a drop shadow behind the text
-                    dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-                    dc.drawText(_centerX+1, _centerY + (_radius * .75) +1, Graphics.FONT_SYSTEM_TINY, label, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
                     // Draw the label
                     dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
-                    dc.drawText(_centerX, _centerY + (_radius * .75), Graphics.FONT_SYSTEM_TINY, label, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+                    dc.drawText(_centerX, _centerY, Graphics.FONT_SYSTEM_TINY, label, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+
+                    // Draw full arc
+                    dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
+                    dc.setPenWidth(2);
+                    dc.drawArc(_centerX, _centerY, _radius, Graphics.ARC_CLOCKWISE, 0, 360);
                 }
             }
         }
