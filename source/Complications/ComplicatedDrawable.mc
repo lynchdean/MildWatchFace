@@ -6,6 +6,7 @@
 import Toybox.Lang;
 import Toybox.Graphics;
 import Toybox.WatchUi;
+import Toybox.Application;
 
 module Complicated {
 
@@ -16,7 +17,7 @@ module Complicated {
         private var _radius as Number;
         private var _centerX as Number;
         private var _centerY as Number;
-
+        
 
         //! Constructor
         //! @param params Drawable arguments
@@ -50,7 +51,7 @@ module Complicated {
         //! @param dc Draw context
         public function draw(dc as Dc) as Void {            
             if (_updater != null) {
-                var foregroundColor = Application.getApp().getProperty("ForegroundColor");
+                var foregroundColor = Properties.getValue("ForegroundColor");
                 var model = _updater.updateModel();
                 var icon = model.icon;
                 var iconWidth = icon.getWidth();

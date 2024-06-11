@@ -32,19 +32,19 @@ class TypedFaceView extends WatchUi.WatchFace {
         _timeLabel = View.findDrawableById("TimeLabel") as Text;
 
         _complications[0] = View.findDrawableById("Complication1") as ComplicationDrawable;
-        var prop = Application.getApp().getProperty("Complication1");
+        var prop = Properties.getValue("Complication1");
         _complications[0].setModelUpdater(Complicated.getComplication(prop));
 
         _complications[1] = View.findDrawableById("Complication2") as ComplicationDrawable;    
-        prop = Application.getApp().getProperty("Complication2");
+        prop = Properties.getValue("Complication2");
         _complications[1].setModelUpdater(Complicated.getComplication(prop));
 
         _complications[2] = View.findDrawableById("Complication3") as ComplicationDrawable;    
-        prop = Application.getApp().getProperty("Complication3");
+        prop = Properties.getValue("Complication3");
         _complications[2].setModelUpdater(Complicated.getComplication(prop));
 
         _complications[3] = View.findDrawableById("Complication4") as ComplicationDrawable;    
-        prop = Application.getApp().getProperty("Complication4");
+        prop = Properties.getValue("Complication4");
         _complications[3].setModelUpdater(Complicated.getComplication(prop));
 
     }
@@ -67,7 +67,7 @@ class TypedFaceView extends WatchUi.WatchFace {
                 hours = hours - 12;
             }
         } else {
-            if (Application.getApp().getProperty("UseMilitaryFormat")) {
+            if (Properties.getValue("UseMilitaryFormat")) {
                 timeFormat = "$1$$2$";
                 hours = hours.format("%02d");
             }
@@ -75,7 +75,7 @@ class TypedFaceView extends WatchUi.WatchFace {
         var timeString = Lang.format(timeFormat, [hours, clockTime.min.format("%02d")]);
 
         // Update the view
-        _timeLabel.setColor(Application.getApp().getProperty("ForegroundColor"));
+        _timeLabel.setColor(Properties.getValue("ForegroundColor"));
         _timeLabel.setText(timeString);
 
         // Call the parent onUpdate function to redraw the layout
