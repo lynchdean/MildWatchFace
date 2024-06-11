@@ -75,7 +75,7 @@ class TypedFaceView extends WatchUi.WatchFace {
         var timeString = Lang.format(timeFormat, [hours, clockTime.min.format("%02d")]);
 
         // Update the view
-        _timeLabel.setColor(Properties.getValue("ForegroundColor"));
+        _timeLabel.setColor(Properties.getValue("TextColor"));
         _timeLabel.setText(timeString);
 
         // Call the parent onUpdate function to redraw the layout

@@ -52,13 +52,14 @@ module Complicated {
         public function draw(dc as Dc) as Void {            
             if (_updater != null) {
                 var foregroundColor = Properties.getValue("ForegroundColor");
+                var textColor = Properties.getValue("TextColor");
                 var model = _updater.updateModel();
                 var icon = model.icon;
                 var iconWidth = icon.getWidth();
                 var iconHeight = icon.getHeight();                
 
                 // Draw the background
-                dc.drawBitmap(locX, locY, _background);   
+                // dc.drawBitmap(locX, locY, _background);   
                 // Draw the icon
                 dc.drawBitmap(_centerX - (iconWidth / 2), _centerY - (iconHeight / 2), icon);            
 
@@ -83,7 +84,7 @@ module Complicated {
 
                     // Draw a drop shadow behind the text
                     // Draw the label
-                    dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
+                    dc.setColor(textColor, Graphics.COLOR_TRANSPARENT);
                     dc.drawText(_centerX, _centerY, Graphics.FONT_SYSTEM_TINY, label, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
                     // Draw full arc

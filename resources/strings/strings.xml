@@ -4,6 +4,7 @@
 
     <string id="BackgroundColorTitle">Background Color</string>
     <string id="ForegroundColorTitle">Foreground Color</string>
+    <string id="TextColorTitle">Text Color</string>
     <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
     <string id="Complication1">Complication 1</string>
     <string id="Complication2">Complication 2</string>
