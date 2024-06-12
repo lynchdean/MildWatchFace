@@ -17,11 +17,12 @@ class TypedFaceView extends WatchUi.WatchFace {
     // so it has to be declared as accepting null
     private var _timeLabel as Text?;  
     private var _complications as Array<ComplicationDrawable>;
+    private var _mildLogo as BitmapReference?;
 
     //! Constructor
     function initialize() {
         WatchFace.initialize();
-        _complications = new Array<ComplicationDrawable>[4];
+        _complications = new Array<ComplicationDrawable>[3];
     }
 
     //! Load layout
@@ -30,23 +31,9 @@ class TypedFaceView extends WatchUi.WatchFace {
         setLayout(Rez.Layouts.WatchFace(dc));
 
         _timeLabel = View.findDrawableById("TimeLabel") as Text;
-
-        _complications[0] = View.findDrawableById("Complication1") as ComplicationDrawable;
-        var prop = Properties.getValue("Complication1");
-        _complications[0].setModelUpdater(Complicated.getComplication(prop));
-
-        _complications[1] = View.findDrawableById("Complication2") as ComplicationDrawable;    
-        prop = Properties.getValue("Complication2");
-        _complications[1].setModelUpdater(Complicated.getComplication(prop));
-
-        _complications[2] = View.findDrawableById("Complication3") as ComplicationDrawable;    
-        prop = Properties.getValue("Complication3");
-        _complications[2].setModelUpdater(Complicated.getComplication(prop));
-
-        _complications[3] = View.findDrawableById("Complication4") as ComplicationDrawable;    
-        prop = Properties.getValue("Complication4");
-        _complications[3].setModelUpdater(Complicated.getComplication(prop));
-
+        
+        setMildLogo();
+        setComplications();
     }
 
     //! Called when this View is brought to the foreground. Restore
@@ -80,6 +67,9 @@ class TypedFaceView extends WatchUi.WatchFace {
 
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+
+        // Draw Mild logo
+        dc.drawBitmap(0, 0, _mildLogo);
     }
 
     //! Called when this View is removed from the screen. Save the
@@ -96,4 +86,34 @@ class TypedFaceView extends WatchUi.WatchFace {
     function onEnterSleep() {
     }
 
+    function setMildLogo() {
+        // Set Mild Logo colour
+        var mildColor = Properties.getValue("MildColor");
+        if (mildColor != null) {
+            switch (mildColor) {
+                case 1:
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildWhite);
+                    break;
+                default:
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildBlack);
+            }
+        } else {
+            // A quick test suggests null isn't handled by switch cases so this is just to be safe.
+            _mildLogo = Application.loadResource(Rez.Drawables.mildBlack);
+        }
+    }
+
+    function setComplications() {
+        _complications[0] = View.findDrawableById("Complication1") as ComplicationDrawable;
+        var prop = Properties.getValue("Complication1");
+        _complications[0].setModelUpdater(Complicated.getComplication(prop));
+
+        _complications[1] = View.findDrawableById("Complication2") as ComplicationDrawable;    
+        prop = Properties.getValue("Complication2");
+        _complications[1].setModelUpdater(Complicated.getComplication(prop));
+
+        _complications[2] = View.findDrawableById("Complication3") as ComplicationDrawable;    
+        prop = Properties.getValue("Complication3");
+        _complications[2].setModelUpdater(Complicated.getComplication(prop));
+    }
 }

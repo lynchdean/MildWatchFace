@@ -27,6 +27,13 @@
         </settingConfig>
     </setting>
 
+    <setting propertyKey="@Properties.MildColor" title="@Strings.MildColorTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ColorBlack</listEntry>
+            <listEntry value="1">@Strings.ColorWhite</listEntry>            
+        </settingConfig>
+    </setting>
+
     <setting propertyKey="@Properties.Complication1" title="@Strings.Complication1">
         <settingConfig type="list">
             <listEntry value="0">@Strings.Battery</listEntry>
@@ -50,17 +57,6 @@
     </setting>
 
     <setting propertyKey="@Properties.Complication3" title="@Strings.Complication3">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.Battery</listEntry>
-            <listEntry value="1">@Strings.Steps</listEntry>
-            <listEntry value="2">@Strings.Date</listEntry>
-            <listEntry value="3">@Strings.HeartRate</listEntry>
-            <listEntry value="4">@Strings.ActiveMinutes</listEntry>
-            <listEntry value="-1">@Strings.None</listEntry>              
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.Complication4" title="@Strings.Complication4">
         <settingConfig type="list">
             <listEntry value="0">@Strings.Battery</listEntry>
             <listEntry value="1">@Strings.Steps</listEntry>

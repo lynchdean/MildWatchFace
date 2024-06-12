@@ -10,6 +10,8 @@ import Toybox.Lang;
 //! App class for the TypedFace
 class TypedFaceApp extends Application.AppBase {
 
+    var _view;
+
     //! Constructor
     function initialize() {
         AppBase.initialize();
@@ -27,12 +29,14 @@ class TypedFaceApp extends Application.AppBase {
 
     //! Return the initial view of your application here
     function getInitialView() {
-        return [ new TypedFaceView() ];
+        _view = new TypedFaceView();
+        return [ _view ];
     }
 
     // New app settings have been received so trigger a UI update
     function onSettingsChanged() as Void {
+        _view.setMildLogo();
+        _view.setComplications();
         WatchUi.requestUpdate();
     }
-
 }

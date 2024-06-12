@@ -2,14 +2,14 @@
 
     <string id="AppName">${appName}</string>
 
-    <string id="BackgroundColorTitle">Background Color</string>
-    <string id="ForegroundColorTitle">Foreground Color</string>
-    <string id="TextColorTitle">Text Color</string>
+    <string id="BackgroundColorTitle">Background Colour</string>
+    <string id="ForegroundColorTitle">Foreground Colour</string>
+    <string id="TextColorTitle">Text Colour</string>
+    <string id="MildColorTitle">Mild Colour</string>
     <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
     <string id="Complication1">Complication 1</string>
     <string id="Complication2">Complication 2</string>
     <string id="Complication3">Complication 3</string>
-    <string id="Complication4">Complication 4</string>
 
     <string id="Battery">Battery</string>
     <string id="Steps">Steps</string>

@@ -2,22 +2,18 @@
     <drawable class="Background" />
     <drawable id="Complication1" class="Complicated.ComplicationDrawable">
         <param name="locX">dc.getWidth() * .25</param>
-        <param name="locY">dc.getHeight() * .22</param>
+        <param name="locY">dc.getHeight() * .78</param>
     </drawable>
 
     <drawable id="Complication2" class="Complicated.ComplicationDrawable">
         <param name="locX">dc.getWidth() / 2</param>
-        <param name="locY">dc.getHeight() * .12</param>
+        <param name="locY">dc.getHeight() * .88</param>
     </drawable>
 
     <drawable id="Complication3" class="Complicated.ComplicationDrawable">
         <param name="locX">dc.getWidth() * .75</param>
-        <param name="locY">dc.getHeight() * .22</param>
+        <param name="locY">dc.getHeight() * .78</param>
     </drawable>
 
-    <drawable id="Complication4" class="Complicated.ComplicationDrawable">
-        <param name="locX">dc.getWidth() * .12 </param>
-        <param name="locY">dc.getHeight() / 2</param>
-    </drawable>
-    <label id="TimeLabel" x="center" y="center" font="Graphics.FONT_NUMBER_HOT" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
+    <label id="TimeLabel" x="center" y="top" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_BLUE" />
 </layout>
