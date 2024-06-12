@@ -22,7 +22,7 @@
     <string id="ColorDarkGray">Dark Gray</string>
     <string id="ColorLightGray">Light Gray</string>
     <string id="ColorWhite">White</string>
-    <string id="ColorBlue">Blue</string>
-    <string id="ColorRed">Red</string>
-
+    <string id="ColorOlive">Olive</string>
+    <string id="ColorYellow">Yellow</string>
+    <string id="ColorLavender">Lavender</string>
 </strings>
