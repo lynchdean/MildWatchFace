@@ -12,7 +12,7 @@ import Toybox.Application;
 import Complicated;
 
 //! Main watch face view
-class TypedFaceView extends WatchUi.WatchFace {
+class MildFaceView extends WatchUi.WatchFace {
     // We can't initialize time label in the initializer
     // so it has to be declared as accepting null
     private var _timeLabel as Text?;  
@@ -92,14 +92,14 @@ class TypedFaceView extends WatchUi.WatchFace {
         if (mildColor != null) {
             switch (mildColor) {
                 case 1:
-                    _mildLogo = Application.loadResource(Rez.Drawables.mildWhite);
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildBlack);
                     break;
                 default:
-                    _mildLogo = Application.loadResource(Rez.Drawables.mildBlack);
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildWhite);
             }
         } else {
             // A quick test suggests null isn't handled by switch cases so this is just to be safe.
-            _mildLogo = Application.loadResource(Rez.Drawables.mildBlack);
+            _mildLogo = Application.loadResource(Rez.Drawables.mildWhite);
         }
     }
 

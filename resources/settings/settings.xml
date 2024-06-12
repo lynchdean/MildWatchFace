@@ -29,8 +29,8 @@
 
     <setting propertyKey="@Properties.MildColor" title="@Strings.MildColorTitle">
         <settingConfig type="list">
-            <listEntry value="0">@Strings.ColorBlack</listEntry>
-            <listEntry value="1">@Strings.ColorWhite</listEntry>            
+            <listEntry value="0">@Strings.ColorWhite</listEntry>
+            <listEntry value="1">@Strings.ColorBlack</listEntry>            
         </settingConfig>
     </setting>
 

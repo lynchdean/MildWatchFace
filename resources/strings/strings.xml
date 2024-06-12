@@ -1,6 +1,6 @@
 <strings>
 
-    <string id="AppName">${appName}</string>
+    <string id="AppName">MildWatchFace</string>
 
     <string id="BackgroundColorTitle">Background Colour</string>
     <string id="ForegroundColorTitle">Foreground Colour</string>

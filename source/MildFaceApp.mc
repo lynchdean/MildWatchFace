@@ -8,7 +8,7 @@ import Toybox.WatchUi;
 import Toybox.Lang;
 
 //! App class for the TypedFace
-class TypedFaceApp extends Application.AppBase {
+class MildFaceApp extends Application.AppBase {
 
     var _view;
 
@@ -29,7 +29,7 @@ class TypedFaceApp extends Application.AppBase {
 
     //! Return the initial view of your application here
     function getInitialView() {
-        _view = new TypedFaceView();
+        _view = new MildFaceView();
         return [ _view ];
     }
 
