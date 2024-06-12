@@ -72,6 +72,13 @@ class MildFaceView extends WatchUi.WatchFace {
         dc.drawBitmap(0, 0, _mildLogo);
     }
 
+
+    //Formula for your curved line
+    function formula(x) {
+        var y = 20 * Math.sin(x / 30f);
+        return y;
+    }
+
     //! Called when this View is removed from the screen. Save the
     //! state of this View here. This includes freeing resources from
     //! memory.
@@ -92,13 +99,32 @@ class MildFaceView extends WatchUi.WatchFace {
         if (mildColor != null) {
             switch (mildColor) {
                 case 1:
+                    // Black
                     _mildLogo = Application.loadResource(Rez.Drawables.mildBlack);
                     break;
+                case 2:
+                    // Olive
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildOlive);
+                    break;
+                case 3:
+                    // Yellow
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildYellow);
+                    break;
+                case 4:
+                    // Lavender
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildLavender);
+                    break;
+                case 5:
+                    // Spice
+                    _mildLogo = Application.loadResource(Rez.Drawables.mildSpice);
+                    break;
                 default:
+                // White
                     _mildLogo = Application.loadResource(Rez.Drawables.mildWhite);
             }
         } else {
             // A quick test suggests null isn't handled by switch cases so this is just to be safe.
+            // Default to white as default background is black.
             _mildLogo = Application.loadResource(Rez.Drawables.mildWhite);
         }
     }

@@ -4,22 +4,12 @@
         Import the SVGs and scale all the icons to 10% of the screen
         All icons from freeicons.io
     -->
-    <bitmap id="mildBlack" filename="mild_black.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen">
-        <palette>
-            <color>FFFFFF</color>
-            <color>AAAAAA</color>
-            <color>555555</color>
-            <color>000000</color>
-        </palette>        
-    </bitmap>
-    <bitmap id="mildWhite" filename="mild_white.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen">
-        <palette>
-            <color>FFFFFF</color>
-            <color>AAAAAA</color>
-            <color>555555</color>
-            <color>000000</color>
-        </palette>        
-    </bitmap>
+    <bitmap id="mildBlack" filename="mild_black.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen"/>
+    <bitmap id="mildWhite" filename="mild_white.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen"/>
+    <bitmap id="mildOlive" filename="mild_olive.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen"/>
+    <bitmap id="mildYellow" filename="mild_yellow.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen" />
+    <bitmap id="mildLavender" filename="mild_lavender.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen" />
+    <bitmap id="mildSpice" filename="mild_spice.svg" scaleX="100%" scaleY="100%" scaleRelativeTo="screen" />
     <bitmap id="batteryFull" filename="full_battery.svg" scaleX="15%" scaleY="15%" scaleRelativeTo="screen">
         <palette>
             <color>000000</color>

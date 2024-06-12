@@ -9,6 +9,7 @@
             <listEntry value="0x63563B">@Strings.ColorOlive</listEntry>
             <listEntry value="0xfeddb0">@Strings.ColorYellow</listEntry>
             <listEntry value="0xd7d0e2">@Strings.ColorLavender</listEntry>
+            <listEntry value="0xE63F1A">@Strings.ColorSpice</listEntry> 
         </settingConfig>
     </setting>
 
@@ -19,6 +20,7 @@
             <listEntry value="0x63563B">@Strings.ColorOlive</listEntry>
             <listEntry value="0xfeddb0">@Strings.ColorYellow</listEntry>
             <listEntry value="0xd7d0e2">@Strings.ColorLavender</listEntry>
+            <listEntry value="0xE63F1A">@Strings.ColorSpice</listEntry>
         </settingConfig>
     </setting>
 
@@ -29,13 +31,18 @@
             <listEntry value="0x63563B">@Strings.ColorOlive</listEntry>
             <listEntry value="0xfeddb0">@Strings.ColorYellow</listEntry>
             <listEntry value="0xd7d0e2">@Strings.ColorLavender</listEntry>
+            <listEntry value="0xE63F1A">@Strings.ColorSpice</listEntry> 
         </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.MildColor" title="@Strings.MildColorTitle">
         <settingConfig type="list">
             <listEntry value="0">@Strings.ColorWhite</listEntry>
-            <listEntry value="1">@Strings.ColorBlack</listEntry>            
+            <listEntry value="1">@Strings.ColorBlack</listEntry>
+            <listEntry value="2">@Strings.ColorOlive</listEntry>
+            <listEntry value="3">@Strings.ColorYellow</listEntry>
+            <listEntry value="4">@Strings.ColorLavender</listEntry>
+            <listEntry value="5">@Strings.ColorSpice</listEntry> 
         </settingConfig>
     </setting>
 
