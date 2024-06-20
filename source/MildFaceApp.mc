@@ -35,8 +35,7 @@ class MildFaceApp extends Application.AppBase {
 
     // New app settings have been received so trigger a UI update
     function onSettingsChanged() as Void {
-        _view.setMildLogo();
-        _view.setComplications();
+        _view.onSettingsChanged();
         WatchUi.requestUpdate();
     }
 }

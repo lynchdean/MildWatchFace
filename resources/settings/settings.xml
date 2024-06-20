@@ -6,80 +6,40 @@
             <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
             <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
             <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-            <listEntry value="0x63563B">@Strings.ColorOlive</listEntry>
-            <listEntry value="0xfeddb0">@Strings.ColorYellow</listEntry>
-            <listEntry value="0xd7d0e2">@Strings.ColorLavender</listEntry>
-            <listEntry value="0xE63F1A">@Strings.ColorSpice</listEntry> 
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.ForegroundColor" title="@Strings.ForegroundColorTitle">
-        <settingConfig type="list">
-            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
-            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-            <listEntry value="0x63563B">@Strings.ColorOlive</listEntry>
-            <listEntry value="0xfeddb0">@Strings.ColorYellow</listEntry>
-            <listEntry value="0xd7d0e2">@Strings.ColorLavender</listEntry>
-            <listEntry value="0xE63F1A">@Strings.ColorSpice</listEntry>
+            <listEntry value="0x66663B">@Strings.ColorOlive</listEntry>
+            <listEntry value="0xFFF7CB">@Strings.ColorYellow</listEntry>
+            <listEntry value="0xD7D0E2">@Strings.ColorLavender</listEntry>
+            <listEntry value="0xFD5200">@Strings.ColorSpice</listEntry> 
         </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.TextColor" title="@Strings.TextColorTitle">
         <settingConfig type="list">
             <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
+            <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
+            <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
             <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-            <listEntry value="0x63563B">@Strings.ColorOlive</listEntry>
-            <listEntry value="0xfeddb0">@Strings.ColorYellow</listEntry>
-            <listEntry value="0xd7d0e2">@Strings.ColorLavender</listEntry>
-            <listEntry value="0xE63F1A">@Strings.ColorSpice</listEntry> 
+            <listEntry value="0x66663B">@Strings.ColorOlive</listEntry>
+            <listEntry value="0xFFF7CB">@Strings.ColorYellow</listEntry>
+            <listEntry value="0xD7D0E2">@Strings.ColorLavender</listEntry>
+            <listEntry value="0xFD5200">@Strings.ColorSpice</listEntry> 
         </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.MildColor" title="@Strings.MildColorTitle">
         <settingConfig type="list">
-            <listEntry value="0">@Strings.ColorWhite</listEntry>
-            <listEntry value="1">@Strings.ColorBlack</listEntry>
-            <listEntry value="2">@Strings.ColorOlive</listEntry>
-            <listEntry value="3">@Strings.ColorYellow</listEntry>
-            <listEntry value="4">@Strings.ColorLavender</listEntry>
-            <listEntry value="5">@Strings.ColorSpice</listEntry> 
+            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
+            <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
+            <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
+            <listEntry value="0x66663B">@Strings.ColorOlive</listEntry>
+            <listEntry value="0xFFF7CB">@Strings.ColorYellow</listEntry>
+            <listEntry value="0xD7D0E2">@Strings.ColorLavender</listEntry>
+            <listEntry value="0xFD5200">@Strings.ColorSpice</listEntry> 
         </settingConfig>
     </setting>
 
-    <setting propertyKey="@Properties.Complication1" title="@Strings.Complication1">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.Battery</listEntry>
-            <listEntry value="1">@Strings.Steps</listEntry>
-            <listEntry value="2">@Strings.Date</listEntry>
-            <listEntry value="3">@Strings.HeartRate</listEntry>
-            <listEntry value="4">@Strings.ActiveMinutes</listEntry>
-            <listEntry value="-1">@Strings.None</listEntry>            
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.Complication2" title="@Strings.Complication2">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.Battery</listEntry>
-            <listEntry value="1">@Strings.Steps</listEntry>
-            <listEntry value="2">@Strings.Date</listEntry>
-            <listEntry value="3">@Strings.HeartRate</listEntry>
-            <listEntry value="4">@Strings.ActiveMinutes</listEntry>
-            <listEntry value="-1">@Strings.None</listEntry>            
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.Complication3" title="@Strings.Complication3">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.Battery</listEntry>
-            <listEntry value="1">@Strings.Steps</listEntry>
-            <listEntry value="2">@Strings.Date</listEntry>
-            <listEntry value="3">@Strings.HeartRate</listEntry>
-            <listEntry value="4">@Strings.ActiveMinutes</listEntry>
-            <listEntry value="-1">@Strings.None</listEntry>              
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.UseMilitaryFormat" title="@Strings.MilitaryFormatTitle">
+    <setting propertyKey="@Properties.ShowSeconds" title="@Strings.ShowSecondsTitle">
         <settingConfig type="boolean" />
     </setting>
 
