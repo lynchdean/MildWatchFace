@@ -2,6 +2,7 @@
 
     <property id="BackgroundColor" type="number">0x000000</property>
     <property id="TextColor" type="number">0xFFFFFF</property>
-    <property id="MildColor" type="number">0</property>
-    
+    <property id="MildColor" type="number">0xFFFFFF</property>
+    <property id="ShowSeconds" type="boolean">true</property>
+
 </properties>

@@ -1,4 +1,7 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
-    <bitmap id="mildWhite" filename="mild_white.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" packingFormat="png" />
+    <bitmap id="mildLogo" filename="mild_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false" />
+    <bitmap id="mildLogoOutline" filename="mild_logo_outline.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false" />
+    <bitmap id="mildLogoFigure" filename="mild_logo_figure.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false" />
+    <bitmap id="mildLogoFigureOutline" filename="mild_logo_figure_outline.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false" />
 </drawables>

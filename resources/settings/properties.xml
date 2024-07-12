@@ -2,7 +2,14 @@
 
     <property id="BackgroundColor" type="number">0x000000</property>
     <property id="TextColor" type="number">0xFFFFFF</property>
-    <property id="MildColor" type="number">0xFFFFFF</property>
-    <property id="ShowSeconds" type="boolean">true</property>
+    <property id="LogoColor" type="number">0xFFFFFF</property>
+    <property id="AlwaysOnColor" type="number">0xD3D3CA</property>
+    <property id="LogoIsFigure" type="boolean">false</property>
+    <property id="TopLeft" type="number">1</property>
+    <property id="TopRight" type="number">3</property>
+    <property id="BottomLeft" type="number">4</property>
+    <property id="BottomRight" type="number">2</property>
+    <property id="SmallLeft" type="number">2</property>
+    <property id="SmallRight" type="number">1</property>
 
 </properties>

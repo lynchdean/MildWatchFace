@@ -4,16 +4,32 @@
 
     <string id="BackgroundColorTitle">Background Colour</string>
     <string id="TextColorTitle">Text Colour</string>
-    <string id="MildColorTitle">Mild Colour</string>
-    <string id="ShowSecondsTitle">Show Seconds</string>
+    <string id="LogoColorTitle">Logo Colour</string>
+    <string id="LogoIsFigureTitle">Alternative Logo</string>
 
     <string id="ColorBlack">Black</string>
-    <string id="ColorDarkGray">Dark Gray</string>
-    <string id="ColorLightGray">Light Gray</string>
     <string id="ColorWhite">White</string>
-    <string id="ColorOlive">Olive</string>
-    <string id="ColorYellow">Yellow</string>
-    <string id="ColorLavender">Lavender</string>
-    <string id="ColorSpice">Spice</string>
+    <string id="ColorWhiteDrop">White Drop</string>
+    <string id="ColorGreyWhey">Grey Whey</string>
+    <string id="ColorLightLatte">Light Latte</string>
+    <string id="ColorRoastedUmber">Roasted Umber</string>
+    <string id="ColorRedPepper">Red Pepper</string>
+
+    <string id="TopLeftTitle">Top Left Complication</string>
+    <string id="TopRightTitle">Top Right Complication</string>
+    <string id="BottomLeftTitle">Bottom Left Complication</string>
+    <string id="BottomRightTitle">Bottom Right Complication</string>
+    <string id="SmallLeftTitle">Small Left Complication</string>
+    <string id="SmallRightTitle">Small Right Complication</string>
     
+    <string id="None">None</string>
+    <string id="Battery">Battery</string>
+    <string id="HeartRate">Heart Rate</string>
+    <string id="Temperature">Temperature</string>
+    <string id="Steps">Steps</string>
+    <string id="Calories">Calories</string>
+    <string id="Seconds">Seconds</string>
+    <string id="DeviceConnected">Device Connected</string>
+    <string id="AlarmOn">Alarm On</string>
+
 </strings>
