@@ -253,10 +253,10 @@ class MildFaceView extends WatchUi.WatchFace {
         } else if (n == 4) {
             // Steps
             var steps = (hasComplications and curSteps != null) ? curSteps : ActivityMonitor.getInfo().steps;
-            return Lang.format("STEPS: $1$", [(steps==null) ? "--" : steps.toString()]);
+            return Lang.format("STEPS: $1$", [(steps==null) ? "--" : steps.format("%d").toString()]);
         } else if (n == 5) {
             var cals = (hasComplications and curCals != null) ? curCals : ActivityMonitor.getInfo().calories;
-            return Lang.format("CALS: $1$", [(cals==null) ? "--" : cals.toString()]);
+            return Lang.format("KCAL: $1$", [(cals==null) ? "--" : cals.format("%d").toString()]);
         }
         return "";
     }
