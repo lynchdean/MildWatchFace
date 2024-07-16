@@ -93,6 +93,7 @@ class MildFaceView extends WatchUi.WatchFace {
         xtFontHeight = dc.getFontHeight(Graphics.FONT_XTINY);
         lgFontHeight = dc.getFontHeight(Graphics.FONT_LARGE);
 
+        // Below line is used to determine height for icon font
         System.print(xtFontHeight);
 
         if (hasScalable) {
@@ -240,23 +241,27 @@ class MildFaceView extends WatchUi.WatchFace {
             return Lang.format("HR: $1$", [(hr==null) ? "--" : hr.toString()]);
         } else if (n == 3) {
             // Temperature
-            var temp;
             if (hasComplications and curTemp != null) {
-                temp = curTemp;
-            } else if (Weather.getCurrentConditions() != null) {
-                temp = Weather.getCurrentConditions().temperature;
-                if (temp == null) {
-                    temp = "--"
+                return Lang.format("TEMP: $1$°C", [curTemp.format("%d")]);
+            } else {
+                // Double check for null is important here
+                var currentConditions = Weather.getCurrentConditions();
+                if (currentConditions != null) {
+                    if (currentConditions.temperature != null) {
+                        return Lang.format("TEMP: $1$°C", [currentConditions.temperature.format("%d")]);
+                    }
                 }
+                return "TEMP: --°C";
             }
-            return Lang.format("TEMP: $1$°C", [(temp==null) ? "--" : temp.format("%d").toString()]);
         } else if (n == 4) {
             // Steps
             var steps = (hasComplications and curSteps != null) ? curSteps : ActivityMonitor.getInfo().steps;
-            return Lang.format("STEPS: $1$", [(steps==null) ? "--" : steps.format("%d").toString()]);
+            return Lang.format("STEPS: $1$", [(steps==null) ? "--" : steps.format("%d")]);
         } else if (n == 5) {
             var cals = (hasComplications and curCals != null) ? curCals : ActivityMonitor.getInfo().calories;
-            return Lang.format("KCAL: $1$", [(cals==null) ? "--" : cals.format("%d").toString()]);
+            return Lang.format("KCAL: $1$", [(cals==null) ? "--" : cals.format("%d")]);
+        } else if (n == 6) {
+            return "SUN:";
         }
         return "";
     }
