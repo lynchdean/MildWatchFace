@@ -2,13 +2,10 @@
 
     <property id="BackgroundColor" type="number">0x000000</property>
     <property id="TextColor" type="number">0xFFFFFF</property>
-    <property id="LogoColor" type="number">0xFFFFFF</property>
-    <property id="AlwaysOnColor" type="number">0xD3D3CA</property>
+    <property id="LogoColor" type="number">0</property>
     <property id="LogoIsFigure" type="boolean">false</property>
     <property id="DeviceConnecitedIndicator" type="boolean">true</property>
     <property id="AlarmIndicator" type="boolean">true</property>
     <property id="BatteryIndicator" type="boolean">true</property>
-    <property id="Comp1" type="number">3</property>
-    <property id="Comp2" type="number">4</property>
     
 </properties>

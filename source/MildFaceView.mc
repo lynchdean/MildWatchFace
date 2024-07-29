@@ -17,21 +17,24 @@ import Toybox.Application;
 //! Main watch face view
 class MildFaceView extends WatchUi.WatchFace {
     private var mildLogo as BitmapReference?;
-    private var logoPaddingModifier as Number?;
+    private var logoPM as Number?;
     private var iconFont;
-
+    
     // Power/Screen management
     private var canBurnIn, inLowPower = false;
+    private var hasBitmap2 = false;
+
 
     // Layout
-    private var height, width, centerHeight, centerWidth as Number?;
+    private var height, width, centerH, centerW as Number?;
+    private var statusModifier as Float?;
 
     // Fonts
-    private var xtFontHeight, lgFontHeight as Number?;
+    private var xtFontH, lgFontH as Number?;
     private var hasScalable = false;
     private var xtFont;
     private var lgFont;
-    private var xtRcw, xtRccw as Number?;
+    private var xtR as Number?;
     private var lgR as Number?;
 
     // Complications
@@ -45,6 +48,23 @@ class MildFaceView extends WatchUi.WatchFace {
     private var calsId = null;
     private var curCals = 0;
 
+    // Icon Toggles
+    private var showDeviceConnectedIcon = true;
+    private var showAlarmIcon = true;
+    private var showBatteryIcon = true;
+
+    private var resources as Array<Lang.ResourceId> = [
+        Rez.Drawables.mildLogo,
+        Rez.Drawables.mildFigure,
+        Rez.Drawables.mildLogoOutline,
+        Rez.Drawables.mildFigureOutline,
+        Rez.Drawables.mildLogoWhite,
+        Rez.Drawables.mildLogoBlack,
+        Rez.Drawables.mildLogoRed,
+        Rez.Drawables.mildFigureWhite,
+        Rez.Drawables.mildFigureBlack,
+        Rez.Drawables.mildFigureRed
+    ];
 
     //! Constructor
     function initialize() {
@@ -55,11 +75,16 @@ class MildFaceView extends WatchUi.WatchFace {
         if(settings has :requiresBurnInProtection) {       
         	canBurnIn = settings.requiresBurnInProtection;        	
         }
-        
-        setLogo();
 
+        showDeviceConnectedIcon = Properties.getValue("DeviceConnecitedIndicator");
+        showAlarmIcon = Properties.getValue("AlarmIndicator");
+        showBatteryIcon = Properties.getValue("BatteryIndicator");
+        
         // Font for status icons
         iconFont = Application.loadResource(Rez.Fonts.icon_font);
+        
+        // Check for bitmap tinting
+        hasBitmap2 = Toybox.Graphics.Dc has :drawBitmap2;
 
         // Check for scalable fonts
         hasScalable = Toybox.Graphics has :getVectorFont;
@@ -78,6 +103,8 @@ class MildFaceView extends WatchUi.WatchFace {
             Complications.subscribeToUpdates(stepsId);
             Complications.subscribeToUpdates(calsId);
         }
+
+        setLogo();
     }
 
     //! Load layout
@@ -86,22 +113,20 @@ class MildFaceView extends WatchUi.WatchFace {
         // Screen resolution calculations
         height = dc.getHeight();
         width = dc.getWidth();
-        centerHeight = height / 2;
-        centerWidth = width / 2;
+        centerH = height / 2;
+        centerW = width / 2;
+
+        statusModifier = (height > 218) ? 2.5 : 2;
 
         // Font size calculations
-        xtFontHeight = dc.getFontHeight(Graphics.FONT_XTINY);
-        lgFontHeight = dc.getFontHeight(Graphics.FONT_LARGE);
-
-        // Below line is used to determine height for icon font
-        System.print(xtFontHeight);
+        xtFontH = dc.getFontHeight(Graphics.FONT_XTINY);
+        lgFontH = dc.getFontHeight(Graphics.FONT_LARGE);
 
         if (hasScalable) {
-            xtFont = Graphics.getVectorFont({:face=>["RobotoCondensedBold","RobotoRegular"], :size=>xtFontHeight});
-            lgFont = Graphics.getVectorFont({:face=>["RobotoCondensedBold","RobotoRegular"], :size=>lgFontHeight});
-            xtRcw = centerHeight - Graphics.getFontAscent(xtFont) - 6;
-            xtRccw = centerHeight - 12;
-            lgR = centerHeight - Graphics.getFontAscent(lgFont);
+            xtFont = Graphics.getVectorFont({:face=>["RobotoCondensedBold","RobotoRegular"], :size=>xtFontH});
+            lgFont = Graphics.getVectorFont({:face=>["RobotoCondensedBold","RobotoRegular"], :size=>lgFontH});
+            xtR = centerH - Graphics.getFontDescent(xtFont);
+            lgR = centerH - Graphics.getFontAscent(lgFont);
         } else {
             xtFont = Graphics.FONT_XTINY;
             lgFont = Graphics.FONT_LARGE;
@@ -139,49 +164,38 @@ class MildFaceView extends WatchUi.WatchFace {
         }
         dc.clear();
 
-        // Large Complications (always grey in always on mode)
-        if (canBurnIn && inLowPower) {
-            dc.setColor(Properties.getValue("AlwaysOnColor"), Graphics.COLOR_TRANSPARENT);
-        } else {
-            dc.setColor(Properties.getValue("TextColor"), Graphics.COLOR_TRANSPARENT);
-        }
-
-        if (hasScalable) {
-            dc.drawRadialText(centerWidth, centerHeight, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER, 90, lgR, Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE);
-            dc.drawRadialText(centerWidth, centerHeight, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER, 270, xtRccw, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
-
-            dc.drawRadialText(centerWidth, centerHeight, xtFont, getComplicationString(Properties.getValue("TopLeft")), Graphics.TEXT_JUSTIFY_CENTER, 145, xtRcw, Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE);
-            dc.drawRadialText(centerWidth, centerHeight, xtFont, getComplicationString(Properties.getValue("TopRight")), Graphics.TEXT_JUSTIFY_CENTER, 35, xtRcw, Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE);
-            dc.drawRadialText(centerWidth, centerHeight, xtFont, getComplicationString(Properties.getValue("BottomLeft")), Graphics.TEXT_JUSTIFY_CENTER, 220, xtRccw, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
-            dc.drawRadialText(centerWidth, centerHeight, xtFont, getComplicationString(Properties.getValue("BottomRight")), Graphics.TEXT_JUSTIFY_CENTER, 320, xtRccw, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
-        } else {
-            // dc.drawText(width / 2, 0, Graphics.FONT_MEDIUM, timeString, Graphics.TEXT_JUSTIFY_CENTER);
-            // dc.drawText(width / 2, height - xtFontHeight, Graphics.FONT_XTINY, "batteryString", Graphics.TEXT_JUSTIFY_CENTER);
-            // dc.drawText(width / 2, height - xtFontHeight - 15, Graphics.FONT_XTINY, dateString, Graphics.TEXT_JUSTIFY_CENTER);
-        }
-
-        // Small Complications
-        var sL = Properties.getValue("SmallLeft");
-        var sR = Properties.getValue("SmallRight");
-        dc.drawText(12, centerHeight, (sL == 1) ? xtFont : iconFont, getSmallComplicationString(sL), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER); 
-        dc.drawText(width - 12, centerHeight, (sR == 1) ? xtFont : iconFont, getSmallComplicationString(sR), Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER); 
-
-
-        // Draw Mild logo
+        // Colour Settings for Always-On
         var logoColor;
         if (canBurnIn && inLowPower) {
+            dc.setColor(Properties.getValue("AlwaysOnColor"), Graphics.COLOR_TRANSPARENT);
             logoColor = Properties.getValue("AlwaysOnColor") as Graphics.ColorValue;;
         } else {
+            dc.setColor(Properties.getValue("TextColor"), Graphics.COLOR_TRANSPARENT);
             logoColor = Properties.getValue("LogoColor") as Graphics.ColorValue;;
         }
-        if (dc has :drawBitmap2) {
-            dc.drawBitmap2(width / logoPaddingModifier, height / logoPaddingModifier, mildLogo, {:tintColor=>logoColor});
+        
+        // Large Complications
+        if (hasScalable) {
+            dc.drawRadialText(centerW, centerH, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER, 90, lgR, Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE);
+            dc.drawRadialText(centerW, centerH, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER, 270, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
+            if (!inLowPower) {
+                dc.drawRadialText(centerW, centerH, xtFont, getCompStr(Properties.getValue("Comp1")), Graphics.TEXT_JUSTIFY_CENTER, 210, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
+                dc.drawRadialText(centerW, centerH, xtFont, getCompStr(Properties.getValue("Comp2")), Graphics.TEXT_JUSTIFY_CENTER, 330, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);                
+            }
         } else {
-            dc.drawBitmap(width / logoPaddingModifier, height / logoPaddingModifier, mildLogo);
+            dc.drawText(width / 2, 0, Graphics.FONT_LARGE, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(width / 2, height - xtFontH, Graphics.FONT_XTINY, dateString, Graphics.TEXT_JUSTIFY_CENTER);
         }
 
-        // TEST - Used to check equal distance around the border
-        // dc.drawCircle(centerWidth, centerHeight, centerHeight -12);
+        // Icon status bar
+        dc.drawText(width / 2, height - statusModifier * xtFontH, iconFont, getStatusString(), Graphics.TEXT_JUSTIFY_CENTER);
+
+        // Draw Mild logo
+        if (dc has :drawBitmap2) {
+            dc.drawBitmap2(width / logoPM, height / logoPM, mildLogo, {:tintColor=>logoColor});
+        } else {
+            dc.drawBitmap(width / logoPM, height / logoPM, mildLogo);
+        }
     }
 
     //! Called when this View is removed from the screen. Save the
@@ -206,6 +220,9 @@ class MildFaceView extends WatchUi.WatchFace {
 
     function onSettingsChanged() {
         setLogo();
+        showDeviceConnectedIcon = Properties.getValue("DeviceConnecitedIndicator");
+        showAlarmIcon = Properties.getValue("AlarmIndicator");
+        showBatteryIcon = Properties.getValue("BatteryIndicator");
     }
     
     function onComplicationUpdated(complicationId as Complications.Id) as Void {
@@ -222,16 +239,26 @@ class MildFaceView extends WatchUi.WatchFace {
 
     function setLogo() as Void {
         var isFigure = Properties.getValue("LogoIsFigure");
-        logoPaddingModifier = (isFigure) ? 20 : 10;
-        if (canBurnIn && inLowPower) {
-            mildLogo = (isFigure) ? Application.loadResource(Rez.Drawables.mildLogoFigureOutline) : Application.loadResource(Rez.Drawables.mildLogoOutline);
+        logoPM = (isFigure) ? 20 : 10;
+        var logoId;
+        System.print(hasBitmap2);
+        if (hasBitmap2) {
+            if (canBurnIn && inLowPower) {
+                logoId = (isFigure) ? 3 : 2;
+            } else {
+                logoId = (isFigure) ? 1 : 0;
+            }
         } else {
-            mildLogo = (isFigure) ? Application.loadResource(Rez.Drawables.mildLogoFigure) : Application.loadResource(Rez.Drawables.mildLogo);
+            // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
+            logoId = Properties.getValue("LogoColor");
+            if (isFigure) {
+                logoId = logoId + 3;
+            }
         }
+        mildLogo = Application.loadResource(resources[logoId]);
     }
 
-    function getComplicationString(n as Number) as String {
-        // hasComplications = false;
+    function getCompStr(n as Number) as String {
         if (n == 1) { 
             // Battery %
             return Lang.format("BAT: $1$%", [System.getSystemStats().battery.format("%d")]);
@@ -266,26 +293,28 @@ class MildFaceView extends WatchUi.WatchFace {
         return "";
     }
 
-    function getSmallComplicationString(n as Number) as String {
-        if (n == 1) {
-            // Seconds
-            return System.getClockTime().sec.format("%.2d");
-        } else if (n == 2) {
-            // Device Connected
-            return System.getDeviceSettings().phoneConnected ? "4" : "";
-        } else if (n == 3) {
-            // Alarm Set
-            return System.getDeviceSettings().alarmCount ? "0" : "";
-        } else if (n == 4) {
-            var bat = System.getSystemStats().battery;
-            if (bat > 66) {
-                return "1";
-            } else if (bat > 15) {
-                return "2";
-            } else {
-                return "3";
+    function getStatusString() as String {
+        var status = "";
+        if (showDeviceConnectedIcon) {
+            if (System.getDeviceSettings().phoneConnected) {
+                status = status + "4";
             }
         }
-        return "";
+        if (showAlarmIcon) {
+            if (System.getDeviceSettings().alarmCount) {
+                status = status + "0";
+            }
+        }
+        if (showBatteryIcon) {
+            var bat = System.getSystemStats().battery;
+            if (bat > 66) {
+                status = status + "1";
+            } else if (bat > 15) {
+                status = status + "2";
+            } else {
+                status = status + "3";
+            }
+        }
+        return status;
     }
 }

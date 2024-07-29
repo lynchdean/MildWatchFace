@@ -1,25 +1,40 @@
 AMOLED & Radial Text:
 * Colours: All
 
-| Size      | Devices                           | iconH | status    |
-|-----------|-----------------------------------|-------|-----------|
-| 454x454   | FR965, venu3                      | 39    | done      |
-| 416x416   | FR265                             | 34    | done      |
-| 390x390   | FR165, FR165M, venu3s             | 30    | done      |
-| 360x360   | FR265s                            | 30    | done      |
+| Size      | Devices               | iconH | status    |
+|-----------|-----------------------|-------|-----------|
+| 454x454   | FR965, venu3          | 37    | done      |
+| 416x416   | FR265                 | 34    | done      |
+| 390x390   | FR165, FR165M, venu3s | 30    | done      |
+| 360x360   | FR265s                | 30    | done      |
 
 
 MIPS, Better Colors & Radial Text:
 * Colours: No White Drop
 
-| Size      | Devices                           | iconH | status    |
-|-----------|-----------------------------------|-------|-----------|
-| 260x260   | FR955                             | 20    | done      |
+| Size      | Devices   | iconH | status    |
+|-----------|-----------|-------|-----------|
+| 260x260   | FR955     | 20    | done      |
 
 
 MIPS, Better Colours & No Radial Text:
 * Colours: No White Drop
 
-| Size      | Devices                           | iconH | status    |
-|-----------|-----------------------------------|-------|-----------|
-| 260x260   | FR255, FR255M                     | 20    | todo      |
+| Size      | Devices       | iconH | status    |
+|-----------|---------------|-------|-----------|
+| 260x260   | FR255, FR255M | 20    | done      |
+| 218x218   | FR255s, 255sM | 20    | done      |
+
+
+MIPS, Better Colours, No Bitmap2 & No Radial Text:
+* Colours: No White Drop
+
+| Size      | Devices                                       | iconH | status    | issue                     |
+|-----------|-----------------------------------------------|-------|-----------|---------------------------|
+| 240x240   | FR945LTE, FR945, 245, 245M, FR745, FR945      | 20    | todo      | memory & colour selection |
+
+
+MIPS, Poor Colours, No drawBitmap2 & No Radial Text
+| Size      | Devices   | iconH | status    | issue             |
+|-----------|-----------|-------|-----------|-------------------|
+| 208x208   | FR55      | 20    | todo      | colour selection  |

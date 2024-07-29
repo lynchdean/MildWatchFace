@@ -1,4 +1,0 @@
-<drawables>
-    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
-    <bitmap id="mildWhite" filename="mild_white.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false" />
-</drawables>

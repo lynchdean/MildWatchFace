@@ -2,34 +2,34 @@
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
-            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
-            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-            <listEntry value="0xD3D3CA">@Strings.ColorGreyWhey</listEntry>
-            <listEntry value="0xFFDDB0">@Strings.ColorLightLatte</listEntry>
-            <listEntry value="0x452A25">@Strings.ColorRoastedUmber</listEntry>
-            <listEntry value="0xFF482B">@Strings.ColorRedPepper</listEntry> 
+            <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
+            <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
+            <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
+            <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
         </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.TextColor" title="@Strings.TextColorTitle">
         <settingConfig type="list">
-            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
-            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-            <listEntry value="0xD3D3CA">@Strings.ColorGreyWhey</listEntry>
-            <listEntry value="0xFFDDB0">@Strings.ColorLightLatte</listEntry>
-            <listEntry value="0x452A25">@Strings.ColorRoastedUmber</listEntry>
-            <listEntry value="0xFF482B">@Strings.ColorRedPepper</listEntry> 
+            <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
+            <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
+            <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
+            <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
         </settingConfig>
     </setting>
 
     <setting propertyKey="@Properties.LogoColor" title="@Strings.LogoColorTitle">
         <settingConfig type="list">
-            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
-            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-            <listEntry value="0xD3D3CA">@Strings.ColorGreyWhey</listEntry>
-            <listEntry value="0xFFDDB0">@Strings.ColorLightLatte</listEntry>
-            <listEntry value="0x452A25">@Strings.ColorRoastedUmber</listEntry>
-            <listEntry value="0xFF482B">@Strings.ColorRedPepper</listEntry> 
+            <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
+            <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
+            <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
+            <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
         </settingConfig>
     </setting>
 
@@ -37,70 +37,27 @@
         <settingConfig type="boolean" />
     </setting>
 
-    <setting propertyKey="@Properties.TopLeft" title="@Strings.TopLeftTitle">
+    <setting propertyKey="@Properties.DeviceConnecitedIndicator" title="@Strings.DeviceConnectedIndicatorTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.AlarmIndicator" title="@Strings.AlarmIndicatorTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.BatteryIndicator" title="@Strings.BatteryIndicatorTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.Comp1" title="@Strings.Comp1Title">
         <settingConfig type="list">
-            <listEntry value="0">@Strings.None</listEntry>
-            <listEntry value="1">@Strings.Battery</listEntry>
-            <listEntry value="2">@Strings.HeartRate</listEntry>
-            <listEntry value="3">@Strings.Temperature</listEntry>
-            <listEntry value="4">@Strings.Steps</listEntry>
-            <listEntry value="5">@Strings.Calories</listEntry>
+            <listEntry value="0">@Strings.NotAvailable</listEntry>
         </settingConfig>
     </setting>
 
-    <setting propertyKey="@Properties.TopRight" title="@Strings.TopRightTitle">
+    <setting propertyKey="@Properties.Comp2" title="@Strings.Comp2Title">
         <settingConfig type="list">
-            <listEntry value="0">@Strings.None</listEntry>
-            <listEntry value="1">@Strings.Battery</listEntry>
-            <listEntry value="2">@Strings.HeartRate</listEntry>
-            <listEntry value="3">@Strings.Temperature</listEntry>
-            <listEntry value="4">@Strings.Steps</listEntry>
-            <listEntry value="5">@Strings.Calories</listEntry>
+            <listEntry value="0">@Strings.NotAvailable</listEntry>
         </settingConfig>
     </setting>
-
-
-    <setting propertyKey="@Properties.BottomLeft" title="@Strings.BottomLeftTitle">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.None</listEntry>
-            <listEntry value="1">@Strings.Battery</listEntry>
-            <listEntry value="2">@Strings.HeartRate</listEntry>
-            <listEntry value="3">@Strings.Temperature</listEntry>
-            <listEntry value="4">@Strings.Steps</listEntry>            
-            <listEntry value="5">@Strings.Calories</listEntry>
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.BottomRight" title="@Strings.BottomRightTitle">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.None</listEntry>
-            <listEntry value="1">@Strings.Battery</listEntry>
-            <listEntry value="2">@Strings.HeartRate</listEntry>
-            <listEntry value="3">@Strings.Temperature</listEntry>
-            <listEntry value="4">@Strings.Steps</listEntry>
-            <listEntry value="5">@Strings.Calories</listEntry>
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.SmallLeft" title="@Strings.SmallLeftTitle">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.None</listEntry>
-            <listEntry value="1">@Strings.Seconds</listEntry>
-            <listEntry value="2">@Strings.DeviceConnected</listEntry>
-            <listEntry value="3">@Strings.AlarmOn</listEntry>
-            <listEntry value="4">@Strings.Battery</listEntry>
-
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.SmallRight" title="@Strings.SmallRightTitle">
-        <settingConfig type="list">
-            <listEntry value="0">@Strings.None</listEntry>
-            <listEntry value="1">@Strings.Seconds</listEntry>
-            <listEntry value="2">@Strings.DeviceConnected</listEntry>
-            <listEntry value="3">@Strings.AlarmOn</listEntry>
-            <listEntry value="4">@Strings.Battery</listEntry>
-        </settingConfig>
-    </setting>
-
 </settings>
