@@ -29,12 +29,14 @@ MIPS, Better Colours & No Radial Text:
 MIPS, Better Colours, No Bitmap2 & No Radial Text:
 * Colours: No White Drop
 
-| Size      | Devices                                       | iconH | status    | issue                     |
-|-----------|-----------------------------------------------|-------|-----------|---------------------------|
-| 240x240   | FR945LTE, FR945, 245, 245M, FR745, FR945      | 20    | todo      | memory & colour selection |
+| Size      | Devices                                       | iconH | status    |
+|-----------|-----------------------------------------------|-------|-----------|
+| 240x240   | FR945LTE, FR945, 245, 245M, FR745, FR945      | 20    | done      |
 
 
 MIPS, Poor Colours, No drawBitmap2 & No Radial Text
-| Size      | Devices   | iconH | status    | issue             |
-|-----------|-----------|-------|-----------|-------------------|
-| 208x208   | FR55      | 20    | todo      | colour selection  |
+ * Colours: Only White, Black and Red
+
+| Size      | Devices   | iconH | status    |
+|-----------|-----------|-------|-----------|
+| 208x208   | FR55      | 20    | done      |
