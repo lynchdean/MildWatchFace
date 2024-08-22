@@ -241,7 +241,6 @@ class MildFaceView extends WatchUi.WatchFace {
         var isFigure = Properties.getValue("LogoIsFigure");
         logoPM = (isFigure) ? 20 : 10;
         var logoId;
-        System.print(hasBitmap2);
         if (hasBitmap2) {
             if (canBurnIn && inLowPower) {
                 logoId = (isFigure) ? 3 : 2;

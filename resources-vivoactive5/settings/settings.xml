@@ -1,0 +1,13 @@
+<settings>
+    <setting propertyKey="@Properties.Comp1" title="@Strings.Comp1Title">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.NotAvailable</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.Comp2" title="@Strings.Comp2Title">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.NotAvailable</listEntry>
+        </settingConfig>
+    </setting>
+</settings>

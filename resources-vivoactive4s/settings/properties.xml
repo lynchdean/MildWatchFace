@@ -1,0 +1,11 @@
+<properties>
+
+    <property id="BackgroundColor" type="number">0x000000</property>
+    <property id="TextColor" type="number">0xFFFFFF</property>
+    <property id="LogoColor" type="number">0</property>
+    <property id="LogoIsFigure" type="boolean">false</property>
+    <property id="DeviceConnecitedIndicator" type="boolean">true</property>
+    <property id="AlarmIndicator" type="boolean">true</property>
+    <property id="BatteryIndicator" type="boolean">true</property>
+    
+</properties>
