@@ -1,1 +1,161 @@
 project.manifest = manifest.xml
+
+
+# ------------------------------------------------------------------
+# Per-Device Annotations
+# ------------------------------------------------------------------
+
+# Covers the rest of devices without Bitmap2 and without RadialText and >= CIQ v2
+base.excludeAnnotations = hasBitmap2;ciq1
+
+# Devices with Bitmap2 & Radial Text
+epix2.excludeAnnotations = noBitmap2;ciq1
+epix2pro42mm.excludeAnnotations = noBitmap2;ciq1
+epix2pro47mm.excludeAnnotations = noBitmap2;ciq1
+epix2pro51mm.excludeAnnotations = noBitmap2;ciq1
+
+fenix7.excludeAnnotations = noBitmap2;ciq1
+fenix7pro.excludeAnnotations = noBitmap2;ciq1
+fenix7pronowifi.excludeAnnotations = noBitmap2;ciq1
+fenix7s.excludeAnnotations = noBitmap2;ciq1
+fenix7spro.excludeAnnotations = noBitmap2;ciq1
+fenix7x.excludeAnnotations = noBitmap2;ciq1
+fenix7xpro.excludeAnnotations = noBitmap2;ciq1
+fenix7xpronowifi.excludeAnnotations = noBitmap2;ciq1
+
+fr165.excludeAnnotations = noBitmap2;ciq1
+fr165m.excludeAnnotations = noBitmap2;ciq1
+fr265.excludeAnnotations = noBitmap2;ciq1
+fr265s.excludeAnnotations = noBitmap2;ciq1
+fr955.excludeAnnotations = noBitmap2;ciq1
+fr965.excludeAnnotations = noBitmap2;ciq1
+
+venu3.excludeAnnotations = noBitmap2;ciq1
+venu3s.excludeAnnotations = noBitmap2;ciq1
+
+# Devices with Bitmap2 but not Radial Text
+fr255.excludeAnnotations = noBitmap2;ciq1
+fr255m.excludeAnnotations = noBitmap2;ciq1
+fr255s.excludeAnnotations = noBitmap2;ciq1
+fr255sm.excludeAnnotations = noBitmap2;ciq1
+
+venu2.excludeAnnotations = noBitmap2;ciq1
+venu2plus.excludeAnnotations = noBitmap2;ciq1
+venu2s.excludeAnnotations = noBitmap2;ciq1
+
+vivoactive5.excludeAnnotations = noBitmap2;ciq1
+
+# CIQ v1 devices
+fr45.excludeAnnotations = hasBitmap2;noBitmap2;ciq2plus
+
+
+# -------------------------------------------------------------
+# Resource families
+# -------------------------------------------------------------
+
+
+
+# ----
+# AMOLED devices (Uses default resources settings)
+# 454x454
+epix2pro51mm.resourcePath = $(epix2pro51mm.resourcePath);resources-icons-37
+fr965.resourcePath = $(fr965.resourcePath);resources-icons-37
+venu3.resourcePath = $(venu3.resourcePath);resources-icons-37
+# 416x416
+epix2.resourcePath = $(epix2.resourcePath);resources-icons-30
+epix2pro47mm.resourcePath = $(epix2pro47mm.resourcePath);resources-icons-30
+fr265.resourcePath = $(fr265.resourcePath);resources-icons-30
+# 390x390
+epix2pro42mm.resourcePath = $(epix2pro42mm.resourcePath);resources-icons-30
+fr165.resourcePath = $(fr165.resourcePath);resources-icons-30
+fr165m.resourcePath = $(fr165m.resourcePath);resources-icons-30
+venu3s.resourcePath = $(venu3s.resourcePath);resources-icons-30
+# 360x360
+fr265s.resourcePath = $(fr265s.resourcePath);resources-icons-30
+
+
+
+# ----
+# AMOLED, but no support for radialtext
+# 416x416
+venu2.resourcePath = $(venu2.resourcePath);resources-settings-amoled-noradialtext;resources-icons-30
+venu2plus.resourcePath = $(venu2plus.resourcePath);resources-settings-amoled-noradialtext;resources-icons-30
+# 390x390
+vivoactive5.resourcePath = $(vivoactive5.resourcePath);resources-settings-amoled-noradialtext;resources-icons-30
+# 360x360
+venu2s.resourcePath = $(venu2s.resourcePath);resources-settings-amoled-noradialtext;resources-icons-30
+
+
+# ----
+# AMOLED, but no support for Bitmap2 or radialtext
+# 390x390
+venu.resourcePath = $(venu.resourcePath);resources-settings-amoled-nobitmap2;resources-icons-30
+
+
+# ----
+# MIPS devices that have both Bitmap2 & radialText
+# 280x280
+fenix7x.resourcePath = $(fenix7x.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+fenix7xpro.resourcePath = $(fenix7xpro.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+fenix7xpronowifi.resourcePath = $(fenix7xpronowifi.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+# 260x260
+fr955.resourcePath = $(fr955.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+fenix7.resourcePath = $(fenix7.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+fenix7pro.resourcePath = $(fenix7pro.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+fenix7pronowifi.resourcePath = $(fenix7pronowifi.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+# 240x240
+fenix7s.resourcePath = $(fenix7s.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+fenix7spro.resourcePath = $(fenix7spro.resourcePath);resources-settings-mips-radialtext;resources-icons-19
+
+
+# ----
+# MIPS devices with Bitmap2, but not radialText
+# resources-settings-mips-bitmap2 + resources-icons-19
+# 260x260
+fr255.resourcePath = $(fr255.resourcePath);resources-settings-mips-bitmap2;resources-icons-19
+fr255m.resourcePath = $(fr255m.resourcePath);resources-settings-mips-bitmap2;resources-icons-19
+# 218x218
+fr255s.resourcePath = $(fr255s.resourcePath);resources-settings-mips-bitmap2;resources-icons-19
+fr255sm.resourcePath = $(fr255sm.resourcePath);resources-settings-mips-bitmap2;resources-icons-19
+
+
+# ----
+# Default for MIPS devices without Bitmap2 & radialText
+# Logo colours limited to White, Black & Red
+# resources-settings-mips + resources-icons-19
+# 280x280
+fenix6xpro.resourcePath = $(fenix6xpro.resourcePath);resources-settings-mips;resources-icons-19
+# 260x260
+fenix6.resourcePath = $(fenix6.resourcePath);resources-settings-mips;resources-icons-19
+fenix6pro.resourcePath = $(fenix6pro.resourcePath);resources-settings-mips;resources-icons-19
+fenix6spro.resourcePath = $(fenix6spro.resourcePath);resources-settings-mips;resources-icons-19
+vivoactive4.resourcePath = $(vivoactive4.resourcePath);resources-settings-mips;resources-icons-19
+# 240x240
+fenix5.resourcePath = $(fenix5.resourcePath);resources-settings-mips;resources-icons-19
+fenix5plus.resourcePath = $(fenix5plus.resourcePath);resources-settings-mips;resources-icons-19
+fenix5splus.resourcePath = $(fenix5splus.resourcePath);resources-settings-mips;resources-icons-19
+fenix5x.resourcePath = $(fenix5x.resourcePath);resources-settings-mips;resources-icons-19
+fenix5xplus.resourcePath = $(fenix5xplus.resourcePath);resources-settings-mips;resources-icons-19
+fenix6s.resourcePath = $(fenix6s.resourcePath);resources-settings-mips;resources-icons-19
+fr245.resourcePath = $(fr245.resourcePath);resources-settings-mips;resources-icons-19
+fr245m.resourcePath = $(fr245m.resourcePath);resources-settings-mips;resources-icons-19
+fr645.resourcePath = $(fr645.resourcePath);resources-settings-mips;resources-icons-19 
+fr645m.resourcePath = $(fr645m.resourcePath);resources-settings-mips;resources-icons-19 
+fr745.resourcePath = $(fr745.resourcePath);resources-settings-mips;resources-icons-19
+fr935.resourcePath = $(fr935.resourcePath);resources-settings-mips;resources-icons-19
+fr945.resourcePath = $(fr945.resourcePath);resources-settings-mips;resources-icons-19
+fr945lte.resourcePath = $(fr945lte.resourcePath);resources-settings-mips;resources-icons-19
+vivoactive3.resourcePath = $(vivoactive3.resourcePath);resources-settings-mips;resources-icons-19
+vivoactive3m.resourcePath = $(vivoactive3m.resourcePath);resources-settings-mips;resources-icons-19
+vivoactive3mlte.resourcePath = $(vivoactive3mlte.resourcePath);resources-settings-mips;resources-icons-19
+# 218x218
+fenix5s.resourcePath = $(fenix5s.resourcePath);resources-settings-mips;resources-icons-19
+vivoactive4s.resourcePath = $(vivoactive4s.resourcePath);resources-settings-mips;resources-icons-19
+
+
+# ----
+# Less colours - Restricted to White, Black & Red for all colour options
+# resources-settings-mips-lesscolours + resources-icons-19
+# 208x208
+fr45.resourcePath = $(fr45.resourcePath);resources-settings-mips-lesscolours;resources-icons-19
+fr55.resourcePath = $(fr55.resourcePath);resources-settings-mips-lesscolours;resources-icons-19

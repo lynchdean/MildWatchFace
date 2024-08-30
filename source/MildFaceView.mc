@@ -12,41 +12,31 @@ import Toybox.Weather;
 import Toybox.Time.Gregorian;
 import Toybox.Application;
 
-// import Complicated;
+const hasScalable = Toybox.Graphics has :getVectorFont;
+const hasComplications = Toybox has :Complications;
 
-//! Main watch face view
 class MildFaceView extends WatchUi.WatchFace {
     private var mildLogo as BitmapReference?;
     private var logoPM as Number?;
     private var iconFont;
     
     // Power/Screen management
-    private var canBurnIn, inLowPower = false;
-    private var hasBitmap2 = false;
-
+    (:ciq2plus) private var canBurnIn, inLowPower = false;
 
     // Layout
-    private var height, width, centerH, centerW as Number?;
+    private var height, width as Number?;
+    (:ciq2plus) private var centerH, centerW as Number?;
     private var statusModifier as Float?;
 
     // Fonts
-    private var xtFontH, lgFontH as Number?;
-    private var hasScalable = false;
-    private var xtFont;
-    private var lgFont;
-    private var xtR as Number?;
-    private var lgR as Number?;
+    (:ciq2plus) private var lgFontH as Number?;
+    private var xtFontH as Number?;
+    private var xtFont, lgFont;
+    (:ciq2plus) private var xtR, lgR as Number?;
 
     // Complications
-    private var hasComplications = false;
-    private var hrId = null;
-    private var curHr = 0;
-    private var tempId = null;
-    private var curTemp = 0;
-    private var stepsId = null;
-    private var curSteps = 0;
-    private var calsId = null;
-    private var curCals = 0;
+    (:ciq2plus) private var hrId, tempId, stepsId, calsId = null;
+    (:ciq2plus) private var curHr, curTemp, curSteps, curCals = 0;
 
     // Icon Toggles
     private var showDeviceConnectedIcon = true;
@@ -66,7 +56,9 @@ class MildFaceView extends WatchUi.WatchFace {
         Rez.Drawables.mildFigureRed
     ];
 
-    //! Constructor
+    // Implementation for devices on CIQ v2 and greater. 
+    // Most noteably includes Properties.getValue() and Application.loadResource() API's. 
+    (:ciq2plus)
     function initialize() {
         WatchFace.initialize();
 
@@ -76,21 +68,9 @@ class MildFaceView extends WatchUi.WatchFace {
         	canBurnIn = settings.requiresBurnInProtection;        	
         }
 
-        showDeviceConnectedIcon = Properties.getValue("DeviceConnecitedIndicator");
-        showAlarmIcon = Properties.getValue("AlarmIndicator");
-        showBatteryIcon = Properties.getValue("BatteryIndicator");
-        
         // Font for status icons
         iconFont = Application.loadResource(Rez.Fonts.icon_font);
-        
-        // Check for bitmap tinting
-        hasBitmap2 = Toybox.Graphics.Dc has :drawBitmap2;
 
-        // Check for scalable fonts
-        hasScalable = Toybox.Graphics has :getVectorFont;
-
-        // Check for complications
-        hasComplications = Toybox has :Complications;
         if(hasComplications) {
             hrId = new Complications.Id(Complications.COMPLICATION_TYPE_HEART_RATE);
             tempId = new Complications.Id(Complications.COMPLICATION_TYPE_CURRENT_TEMPERATURE);
@@ -103,12 +83,22 @@ class MildFaceView extends WatchUi.WatchFace {
             Complications.subscribeToUpdates(stepsId);
             Complications.subscribeToUpdates(calsId);
         }
+        onSettingsChanged();
+    }
 
-        setLogo();
+    // Implementation for devices on CIQ v1. 
+    // Cannot use Properties.getValue() and Application.loadResource() API's. 
+    // Instead uses Application.getApp().getProperty() and WatchUi.loadResource() respectively.
+    (:ciq1)
+    function initialize() {
+        WatchFace.initialize();
+        iconFont = WatchUi.loadResource(Rez.Fonts.icon_font);
+        onSettingsChanged();
     }
 
     //! Load layout
     //! @param dc Draw context
+    (:ciq2plus)
     function onLayout(dc as Dc) as Void { 
         // Screen resolution calculations
         height = dc.getHeight();
@@ -116,7 +106,7 @@ class MildFaceView extends WatchUi.WatchFace {
         centerH = height / 2;
         centerW = width / 2;
 
-        statusModifier = (height > 218) ? 2.5 : 2;
+        statusModifier = (height > 240) ? 2.5 : 2;
 
         // Font size calculations
         xtFontH = dc.getFontHeight(Graphics.FONT_XTINY);
@@ -133,6 +123,23 @@ class MildFaceView extends WatchUi.WatchFace {
         }
     }
 
+    //! Load layout
+    //! @param dc Draw context
+    (:ciq1)
+    function onLayout(dc as Dc) as Void { 
+        // Screen resolution calculations
+        height = dc.getHeight();
+        width = dc.getWidth();
+
+        statusModifier = (height > 240) ? 2.5 : 2;
+
+        // Font size calculations
+        xtFontH = dc.getFontHeight(Graphics.FONT_XTINY);
+
+        xtFont = Graphics.FONT_XTINY;
+        lgFont = Graphics.FONT_LARGE;
+    }
+
     //! Called when this View is brought to the foreground. Restore
     //! the state of this View and prepare it to be shown. This includes
     //! loading resources into memory.
@@ -141,6 +148,7 @@ class MildFaceView extends WatchUi.WatchFace {
 
     //! Update the view
     //! @param dc Draw context
+    (:ciq2plus)
     function onUpdate(dc as Dc) as Void {
         // Get the current time and format it correctly
         var clockTime = System.getClockTime();
@@ -164,7 +172,7 @@ class MildFaceView extends WatchUi.WatchFace {
         }
         dc.clear();
 
-        // Colour Settings for Always-On
+        // Colour Settings depending on Always-On
         var logoColor;
         if (canBurnIn && inLowPower) {
             dc.setColor(Properties.getValue("AlwaysOnColor"), Graphics.COLOR_TRANSPARENT);
@@ -174,7 +182,7 @@ class MildFaceView extends WatchUi.WatchFace {
             logoColor = Properties.getValue("LogoColor") as Graphics.ColorValue;;
         }
         
-        // Large Complications
+        // Draw large complications and/or time and date
         if (hasScalable) {
             dc.drawRadialText(centerW, centerH, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER, 90, lgR, Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE);
             dc.drawRadialText(centerW, centerH, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER, 270, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
@@ -183,11 +191,11 @@ class MildFaceView extends WatchUi.WatchFace {
                 dc.drawRadialText(centerW, centerH, xtFont, getCompStr(Properties.getValue("Comp2")), Graphics.TEXT_JUSTIFY_CENTER, 330, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);                
             }
         } else {
-            dc.drawText(width / 2, 0, Graphics.FONT_LARGE, timeString, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(width / 2, height - xtFontH, Graphics.FONT_XTINY, dateString, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(width / 2, 0, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(width / 2, height - xtFontH, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER);
         }
 
-        // Icon status bar
+        // Draw icon status bar
         dc.drawText(width / 2, height - statusModifier * xtFontH, iconFont, getStatusString(), Graphics.TEXT_JUSTIFY_CENTER);
 
         // Draw Mild logo
@@ -198,6 +206,41 @@ class MildFaceView extends WatchUi.WatchFace {
         }
     }
 
+    // Implementation for devices on CIQ v1. 
+    // Cannot use Properties.getValue() and Application.loadResource() API's. 
+    // Instead uses Application.getApp().getProperty() and WatchUi.loadResource() respectively.
+    //! Update the view
+    //! @param dc Draw context
+    (:ciq1)
+    function onUpdate(dc as Dc) as Void {
+        // Get the current time and date and format it correctly
+        var clockTime = System.getClockTime();
+        var hours = clockTime.hour;
+        if (!System.getDeviceSettings().is24Hour) {
+            if (hours > 12) {
+                hours = hours - 12;
+            }
+        } 
+        var timeString = Lang.format("$1$:$2$", [hours, clockTime.min.format("%02d")]);
+        var date = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
+        var dateString = Lang.format("$1$ $2$", [date.day_of_week.toUpper(), date.day]);
+
+        // Set background Colour
+        dc.setColor(Application.getApp().getProperty("BackgroundColor"), Application.getApp().getProperty("BackgroundColor"));
+        dc.clear();
+    
+        // Small Complications
+        dc.setColor(Application.getApp().getProperty("TextColor"), Graphics.COLOR_TRANSPARENT);
+        dc.drawText(width / 2, 0, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, height - xtFontH, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER);
+
+        // Icon status bar
+        dc.drawText(width / 2, height - statusModifier * xtFontH, iconFont, getStatusString(), Graphics.TEXT_JUSTIFY_CENTER);
+
+        // Draw Logo 
+        dc.drawBitmap(width / logoPM, height / logoPM, mildLogo);
+    }
+
     //! Called when this View is removed from the screen. Save the
     //! state of this View here. This includes freeing resources from
     //! memory.
@@ -205,6 +248,7 @@ class MildFaceView extends WatchUi.WatchFace {
     }
 
     //! The user has just looked at their watch. Timers and animations may be started here.
+    (:ciq2plus)
     function onExitSleep() {
         inLowPower=false;
         setLogo();
@@ -212,19 +256,30 @@ class MildFaceView extends WatchUi.WatchFace {
     }
 
     //! Terminate any active timers and prepare for slow updates.
+    (:ciq2plus)
     function onEnterSleep() {
         inLowPower=true;
         setLogo();
         WatchUi.requestUpdate();
     }
 
+    (:ciq2plus)
     function onSettingsChanged() {
         setLogo();
         showDeviceConnectedIcon = Properties.getValue("DeviceConnecitedIndicator");
         showAlarmIcon = Properties.getValue("AlarmIndicator");
         showBatteryIcon = Properties.getValue("BatteryIndicator");
     }
-    
+
+    (:ciq1)
+    function onSettingsChanged() {
+        setLogo();
+        showDeviceConnectedIcon = Application.getApp().getProperty("DeviceConnecitedIndicator");
+        showAlarmIcon = Application.getApp().getProperty("AlarmIndicator");
+        showBatteryIcon = Application.getApp().getProperty("BatteryIndicator");
+    }
+
+    (:ciq2plus)
     function onComplicationUpdated(complicationId as Complications.Id) as Void {
         if (complicationId.equals(hrId)) {
             curHr = Complications.getComplication(complicationId).value;
@@ -237,26 +292,7 @@ class MildFaceView extends WatchUi.WatchFace {
         }
     }
 
-    function setLogo() as Void {
-        var isFigure = Properties.getValue("LogoIsFigure");
-        logoPM = (isFigure) ? 20 : 10;
-        var logoId;
-        if (hasBitmap2) {
-            if (canBurnIn && inLowPower) {
-                logoId = (isFigure) ? 3 : 2;
-            } else {
-                logoId = (isFigure) ? 1 : 0;
-            }
-        } else {
-            // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
-            logoId = Properties.getValue("LogoColor");
-            if (isFigure) {
-                logoId = logoId + 3;
-            }
-        }
-        mildLogo = Application.loadResource(resources[logoId]);
-    }
-
+    (:ciq2plus)
     function getCompStr(n as Number) as String {
         if (n == 1) { 
             // Battery %
@@ -290,6 +326,43 @@ class MildFaceView extends WatchUi.WatchFace {
             return "SUN:";
         }
         return "";
+    }
+
+    (:hasBitmap2)
+    function setLogo() as Void {
+        var isFigure = Properties.getValue("LogoIsFigure");
+        logoPM = (isFigure) ? 20 : 10;
+        var logoId;
+        if (canBurnIn && inLowPower) {
+            logoId = (isFigure) ? 3 : 2;
+        } else {
+            logoId = (isFigure) ? 1 : 0;
+        }
+        mildLogo = Application.loadResource(resources[logoId]);        
+    }
+
+    (:noBitmap2)
+    function setLogo() as Void {
+        var isFigure = Properties.getValue("LogoIsFigure");
+        logoPM = (isFigure) ? 20 : 10;
+        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
+        var logoId = Properties.getValue("LogoColor");        
+        if (isFigure) {
+            logoId = logoId + 3;
+        }
+        mildLogo = Application.loadResource(resources[logoId]);        
+    }
+
+    (:ciq1)
+    function setLogo() as Void {
+        var isFigure = Application.getApp().getProperty("LogoIsFigure");
+        logoPM = (isFigure) ? 20 : 10;
+        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
+        var logoId = Application.getApp().getProperty("LogoColor");
+        if (isFigure) {
+            logoId = logoId + 3;
+        }
+        mildLogo = WatchUi.loadResource(resources[logoId]); 
     }
 
     function getStatusString() as String {

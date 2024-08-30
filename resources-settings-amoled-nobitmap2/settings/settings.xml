@@ -1,0 +1,21 @@
+<settings>
+    <setting propertyKey="@Properties.LogoColor" title="@Strings.LogoColorTitle">
+        <settingConfig type="list">
+            <listEntry value="4">@Strings.White</listEntry>
+            <listEntry value="5">@Strings.Black</listEntry>
+            <listEntry value="6">@Strings.Red</listEntry> 
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.Comp1" title="@Strings.Comp1Title">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.NotAvailable</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.Comp2" title="@Strings.Comp2Title">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.NotAvailable</listEntry>
+        </settingConfig>
+    </setting>
+</settings>

@@ -1,4 +1,5 @@
-Template to use as a starting point for future watch faces with complications
+Watch face for Mild Activity Run club
 
-Forked from:
-https://github.com/garmin/connectiq-apps
+For instructions please see Garmin IQ store page
+
+For a list of specific devices that are supported please view monkey.jungle

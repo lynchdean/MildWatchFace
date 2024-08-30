@@ -1,0 +1,35 @@
+<settings>
+
+    <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
+            <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
+            <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
+            <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.TextColor" title="@Strings.TextColorTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
+            <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
+            <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
+            <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.LogoColor" title="@Strings.LogoColorTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
+            <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
+            <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
+            <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+        </settingConfig>
+    </setting>
+</settings>
