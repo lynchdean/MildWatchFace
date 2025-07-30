@@ -16,7 +16,7 @@ const hasScalable = Toybox.Graphics has :getVectorFont;
 const hasComplications = Toybox has :Complications;
 
 class MildFaceView extends WatchUi.WatchFace {
-    private var mildLogo as BitmapReference?;
+private var logo as BitmapReference?;
     private var logoPM as Number?;
     private var iconFont;
     
@@ -43,21 +43,35 @@ class MildFaceView extends WatchUi.WatchFace {
     private var showAlarmIcon = true;
     private var showBatteryIcon = true;
 
-    private var resources as Array<Lang.ResourceId> = [
-        Rez.Drawables.mildLogo, // 0 
-        Rez.Drawables.mildFigure,
-        Rez.Drawables.mildLogoOutline,
-        Rez.Drawables.mildFigureOutline,
+    // Both base logo and white varient is neccessary for devices with limited memory
+    private var textLogo as Array<Lang.ResourceId> = [
+        Rez.Drawables.mildLogo,
         Rez.Drawables.mildLogoWhite,
-        Rez.Drawables.mildLogoBlack, // 5
-        Rez.Drawables.mildLogoRed,
+        Rez.Drawables.mildLogoBlack,
+        Rez.Drawables.mildLogoRed
+    ];
+
+    // Figure Logos
+    private var figureLogos as Array<Lang.ResourceId> = [
+        Rez.Drawables.mildFigure,
         Rez.Drawables.mildFigureWhite,
         Rez.Drawables.mildFigureBlack,
-        Rez.Drawables.mildFigureRed,
-        Rez.Drawables.eventLogo, // 10
+        Rez.Drawables.mildFigureRed
+    ];
+
+    // Event Logos
+    // N.B. Green colour will not work on 8-bit colour devices
+    private var eventLogos as Array<Lang.ResourceId> = [
+        Rez.Drawables.eventLogo,
         Rez.Drawables.eventLogoWhite,
         Rez.Drawables.eventLogoBlack,
         Rez.Drawables.eventLogoGreen
+    ];
+
+    // Outline Logos for canBurnIn devices
+    private var outlineLogos as Array<Lang.ResourceId> = [
+        Rez.Drawables.mildLogoOutline,
+        Rez.Drawables.mildFigureOutline
     ];
 
     // Implementation for devices on CIQ v2 and greater. 
@@ -69,7 +83,7 @@ class MildFaceView extends WatchUi.WatchFace {
         //check if AMOLED
         var settings=System.getDeviceSettings();
         if(settings has :requiresBurnInProtection) {       
-        	canBurnIn = settings.requiresBurnInProtection;        	
+            canBurnIn = settings.requiresBurnInProtection;        	
         }
 
         // Font for status icons
@@ -204,9 +218,9 @@ class MildFaceView extends WatchUi.WatchFace {
 
         // Draw Mild logo
         if (dc has :drawBitmap2) {
-            dc.drawBitmap2(width / logoPM, height / logoPM, mildLogo, {:tintColor=>logoColor});
+            dc.drawBitmap2(width / logoPM, height / logoPM, logo, {:tintColor=>logoColor});
         } else {
-            dc.drawBitmap(width / logoPM, height / logoPM, mildLogo);
+            dc.drawBitmap(width / logoPM, height / logoPM, logo);
         }
     }
 
@@ -242,7 +256,7 @@ class MildFaceView extends WatchUi.WatchFace {
         dc.drawText(width / 2, height - statusModifier * xtFontH, iconFont, getStatusString(), Graphics.TEXT_JUSTIFY_CENTER);
 
         // Draw Logo 
-        dc.drawBitmap(width / logoPM, height / logoPM, mildLogo);
+        dc.drawBitmap(width / logoPM, height / logoPM, logo);
     }
 
     //! Called when this View is removed from the screen. Save the
@@ -332,57 +346,60 @@ class MildFaceView extends WatchUi.WatchFace {
         return "";
     }
 
+
     (:hasBitmap2)
     function setLogo() as Void {
-        var isEventLogo = Properties.getValue("LogoIsEvent");
-        if (isEventLogo) {
+        if (Properties.getValue("LogoIsEvent")) {
             logoPM = 10;
-            mildLogo = Application.loadResource(resources[10]);
-        } else {
-            var isFigure = Properties.getValue("LogoIsFigure");
-            logoPM = (isFigure) ? 20 : 10;
-            var logoId;
+            logo = Application.loadResource(eventLogos[0]);
+        } else if (Properties.getValue("LogoIsFigure")) {
+            logoPM = 20;
             if (canBurnIn && inLowPower) {
-                logoId = (isFigure) ? 3 : 2;
+                logo = Application.loadResource(outlineLogos[1]);
             } else {
-                logoId = (isFigure) ? 1 : 0;
+                logo = Application.loadResource(figureLogos[0]);
             }
-            mildLogo = Application.loadResource(resources[logoId]);
+        } else {
+            logoPM = 10;
+            if (canBurnIn && inLowPower) {
+                logo = Application.loadResource(outlineLogos[0]);
+            } else {
+                logo = Application.loadResource(textLogo[0]);
+            }
         }
     }
 
+
     (:noBitmap2)
     function setLogo() as Void {
-        var isEventLogo = Properties.getValue("LogoIsEvent");
-        var isFigure = Properties.getValue("LogoIsFigure");
-        logoPM = 10;
-        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
-        var logoId = Properties.getValue("LogoColor");    
-        if (isEventLogo){
-            logoId = logoId + 7;
+        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex value
+        var logoIndex = Properties.getValue("LogoColor");
+        if (Properties.getValue("LogoIsEvent")) {
             logoPM = 10;
-        } else if (isFigure) {
-            logoId = logoId + 3;
+            logo = Application.loadResource(eventLogos[logoIndex]);
+        } else if (Properties.getValue("LogoIsFigure")) {
             logoPM = 20;
-        } 
-        mildLogo = Application.loadResource(resources[logoId]);        
+            logo = Application.loadResource(figureLogos[logoIndex]);
+        } else {
+            logoPM = 10;
+            logo = Application.loadResource(textLogo[logoIndex]);
+        }
     }
 
     (:ciq1)
     function setLogo() as Void {
-        var isEventLogo = Application.getApp().getProperty("LogoIsEvent");
-        var isFigure = Application.getApp().getProperty("LogoIsFigure");
-        logoPM = 10;
-        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
-        var logoId = Application.getApp().getProperty("LogoColor");    
-        if (isEventLogo){
-            logoId = logoId + 7;
+        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex value
+        var logoIndex = Application.getApp().getProperty("LogoColor");
+        if (Application.getApp().getProperty("LogoIsEvent")) {
             logoPM = 10;
-        } else if (isFigure) {
-            logoId = logoId + 3;
+            logo = WatchUi.loadResource(eventLogos[logoIndex]);
+        } else if (Application.getApp().getProperty("LogoIsFigure")) {
             logoPM = 20;
-        } 
-        mildLogo = WatchUi.loadResource(resources[logoId]);        
+            logo = WatchUi.loadResource(figureLogos[logoIndex]);
+        } else {
+            logoPM = 10;
+            logo = WatchUi.loadResource(textLogo[logoIndex]);
+        }
     }
 
     function getStatusString() as String {

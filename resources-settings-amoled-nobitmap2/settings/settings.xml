@@ -1,9 +1,9 @@
 <settings>
     <setting propertyKey="@Properties.LogoColor" title="@Strings.LogoColorTitle">
         <settingConfig type="list">
-            <listEntry value="4">@Strings.White</listEntry>
-            <listEntry value="5">@Strings.Black</listEntry>
-            <listEntry value="6">@Strings.Red</listEntry> 
+            <listEntry value="1">@Strings.White</listEntry>
+            <listEntry value="2">@Strings.Black</listEntry>
+            <listEntry value="3">@Strings.Red</listEntry> 
         </settingConfig>
     </setting>
 
