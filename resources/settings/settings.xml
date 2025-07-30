@@ -3,11 +3,13 @@
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
             <listEntry value="0x000000">@Strings.Black</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.White</listEntry>
             <listEntry value="0xFFF3E5">@Strings.WhiteDrop</listEntry>
             <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
-            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry>
+            <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
 
@@ -20,6 +22,7 @@
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
             <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+            <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
 
@@ -31,7 +34,8 @@
             <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
-            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry>
+            <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
 
@@ -39,7 +43,11 @@
         <settingConfig type="boolean" />
     </setting>
 
-    <setting propertyKey="@Properties.DeviceConnecitedIndicator" title="@Strings.DeviceConnectedIndicatorTitle">
+    <setting propertyKey="@Properties.LogoIsEvent" title="@Strings.LogoIsEventTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
+    <setting propertyKey="@Properties.DeviceConnectedIndicator" title="@Strings.DeviceConnectedIndicatorTitle">
         <settingConfig type="boolean" />
     </setting>
 

@@ -35,4 +35,20 @@
         </palette>
     </bitmap>
 
+    <bitmap id="eventLogo" filename="event_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false"/>
+    <bitmap id="eventLogoWhite" filename="event_logo_white.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>FFFFFF</color>
+        </palette>
+    </bitmap>
+    <bitmap id="eventLogoBlack" filename="event_logo_black.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>000000</color>
+        </palette>
+    </bitmap>
+    <bitmap id="eventLogoGreen" filename="event_logo_green.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>1b5041</color>
+        </palette>
+    </bitmap>
 </drawables>

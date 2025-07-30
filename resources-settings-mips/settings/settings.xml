@@ -7,7 +7,8 @@
             <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
-            <listEntry value="0xFF0000">@Strings.RedPepper</listEntry> 
+            <listEntry value="0xFF0000">@Strings.RedPepper</listEntry>
+            <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
 
@@ -19,6 +20,7 @@
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
             <listEntry value="0xFF0000">@Strings.RedPepper</listEntry> 
+            <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
 
@@ -26,7 +28,7 @@
         <settingConfig type="list">
             <listEntry value="4">@Strings.White</listEntry>
             <listEntry value="5">@Strings.Black</listEntry>
-            <listEntry value="6">@Strings.Red</listEntry> 
+            <listEntry value="6">@Strings.AlternativeColour</listEntry>
         </settingConfig>
     </setting>
 

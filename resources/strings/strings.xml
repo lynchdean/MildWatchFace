@@ -6,6 +6,7 @@
     <string id="TextColorTitle">Text Colour</string>
     <string id="LogoColorTitle">Logo Colour</string>
     <string id="LogoIsFigureTitle">Alternative Logo</string>
+    <string id="LogoIsEventTitle">Use Event Logo</string>
 
     <string id="Black">Black</string>
     <string id="White">White</string>
@@ -15,8 +16,8 @@
     <string id="RoastedUmber">Roasted Umber</string>
     <string id="RedPepper">Red Pepper</string>
     <string id="Red">Red</string>
-
-    
+    <string id="EmporiumGreen">Emporium Green</string>
+    <string id="AlternativeColour">Alternative Colour (Red, or Green for Event)</string>
 
     <string id="DeviceConnectedIndicatorTitle">Device Connected Indicator</string>
     <string id="AlarmIndicatorTitle">Alarm Set Indicator</string>

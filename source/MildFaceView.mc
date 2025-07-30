@@ -44,16 +44,20 @@ class MildFaceView extends WatchUi.WatchFace {
     private var showBatteryIcon = true;
 
     private var resources as Array<Lang.ResourceId> = [
-        Rez.Drawables.mildLogo,
+        Rez.Drawables.mildLogo, // 0 
         Rez.Drawables.mildFigure,
         Rez.Drawables.mildLogoOutline,
         Rez.Drawables.mildFigureOutline,
         Rez.Drawables.mildLogoWhite,
-        Rez.Drawables.mildLogoBlack,
+        Rez.Drawables.mildLogoBlack, // 5
         Rez.Drawables.mildLogoRed,
         Rez.Drawables.mildFigureWhite,
         Rez.Drawables.mildFigureBlack,
-        Rez.Drawables.mildFigureRed
+        Rez.Drawables.mildFigureRed,
+        Rez.Drawables.eventLogo, // 10
+        Rez.Drawables.eventLogoWhite,
+        Rez.Drawables.eventLogoBlack,
+        Rez.Drawables.eventLogoGreen
     ];
 
     // Implementation for devices on CIQ v2 and greater. 
@@ -266,7 +270,7 @@ class MildFaceView extends WatchUi.WatchFace {
     (:ciq2plus)
     function onSettingsChanged() {
         setLogo();
-        showDeviceConnectedIcon = Properties.getValue("DeviceConnecitedIndicator");
+        showDeviceConnectedIcon = Properties.getValue("DeviceConnectedIndicator");
         showAlarmIcon = Properties.getValue("AlarmIndicator");
         showBatteryIcon = Properties.getValue("BatteryIndicator");
     }
@@ -274,7 +278,7 @@ class MildFaceView extends WatchUi.WatchFace {
     (:ciq1)
     function onSettingsChanged() {
         setLogo();
-        showDeviceConnectedIcon = Application.getApp().getProperty("DeviceConnecitedIndicator");
+        showDeviceConnectedIcon = Application.getApp().getProperty("DeviceConnectedIndicator");
         showAlarmIcon = Application.getApp().getProperty("AlarmIndicator");
         showBatteryIcon = Application.getApp().getProperty("BatteryIndicator");
     }
@@ -330,39 +334,55 @@ class MildFaceView extends WatchUi.WatchFace {
 
     (:hasBitmap2)
     function setLogo() as Void {
-        var isFigure = Properties.getValue("LogoIsFigure");
-        logoPM = (isFigure) ? 20 : 10;
-        var logoId;
-        if (canBurnIn && inLowPower) {
-            logoId = (isFigure) ? 3 : 2;
+        var isEventLogo = Properties.getValue("LogoIsEvent");
+        if (isEventLogo) {
+            logoPM = 10;
+            mildLogo = Application.loadResource(resources[10]);
         } else {
-            logoId = (isFigure) ? 1 : 0;
+            var isFigure = Properties.getValue("LogoIsFigure");
+            logoPM = (isFigure) ? 20 : 10;
+            var logoId;
+            if (canBurnIn && inLowPower) {
+                logoId = (isFigure) ? 3 : 2;
+            } else {
+                logoId = (isFigure) ? 1 : 0;
+            }
+            mildLogo = Application.loadResource(resources[logoId]);
         }
-        mildLogo = Application.loadResource(resources[logoId]);        
     }
 
     (:noBitmap2)
     function setLogo() as Void {
+        var isEventLogo = Properties.getValue("LogoIsEvent");
         var isFigure = Properties.getValue("LogoIsFigure");
-        logoPM = (isFigure) ? 20 : 10;
+        logoPM = 10;
         // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
-        var logoId = Properties.getValue("LogoColor");        
-        if (isFigure) {
+        var logoId = Properties.getValue("LogoColor");    
+        if (isEventLogo){
+            logoId = logoId + 7;
+            logoPM = 10;
+        } else if (isFigure) {
             logoId = logoId + 3;
-        }
+            logoPM = 20;
+        } 
         mildLogo = Application.loadResource(resources[logoId]);        
     }
 
     (:ciq1)
     function setLogo() as Void {
+        var isEventLogo = Application.getApp().getProperty("LogoIsEvent");
         var isFigure = Application.getApp().getProperty("LogoIsFigure");
-        logoPM = (isFigure) ? 20 : 10;
+        logoPM = 10;
         // For devices without Bitmap2, LogoColor's value is an array index instead of a hex colour
-        var logoId = Application.getApp().getProperty("LogoColor");
-        if (isFigure) {
+        var logoId = Application.getApp().getProperty("LogoColor");    
+        if (isEventLogo){
+            logoId = logoId + 7;
+            logoPM = 10;
+        } else if (isFigure) {
             logoId = logoId + 3;
-        }
-        mildLogo = WatchUi.loadResource(resources[logoId]); 
+            logoPM = 20;
+        } 
+        mildLogo = WatchUi.loadResource(resources[logoId]);        
     }
 
     function getStatusString() as String {
