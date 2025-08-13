@@ -349,10 +349,18 @@ private var logo as BitmapReference?;
 
     (:hasBitmap2)
     function setLogo() as Void {
-        if (Properties.getValue("LogoIsEvent")) {
+        // For devices with Bitmap2, LogoColor's value is a hex value
+        var logoType = Properties.getValue("Logo");
+        if (logoType == 0) {
+            // Text Logo
             logoPM = 10;
-            logo = Application.loadResource(eventLogos[0]);
-        } else if (Properties.getValue("LogoIsFigure")) {
+            if (canBurnIn && inLowPower) {
+                logo = Application.loadResource(outlineLogos[0]);
+            } else {
+                logo = Application.loadResource(textLogo[0]);
+            }
+        } else if (logoType == 1) {
+            // Figure Logo
             logoPM = 20;
             if (canBurnIn && inLowPower) {
                 logo = Application.loadResource(outlineLogos[1]);
@@ -360,45 +368,43 @@ private var logo as BitmapReference?;
                 logo = Application.loadResource(figureLogos[0]);
             }
         } else {
+            // Emporium Event Logo
             logoPM = 10;
-            if (canBurnIn && inLowPower) {
-                logo = Application.loadResource(outlineLogos[0]);
-            } else {
-                logo = Application.loadResource(textLogo[0]);
-            }
+            logo = Application.loadResource(eventLogos[0]);
         }
     }
-
 
     (:noBitmap2)
     function setLogo() as Void {
         // For devices without Bitmap2, LogoColor's value is an array index instead of a hex value
+        var logoType = Properties.getValue("Logo");
         var logoIndex = Properties.getValue("LogoColor");
-        if (Properties.getValue("LogoIsEvent")) {
+        if (logoType == 0) {
             logoPM = 10;
-            logo = Application.loadResource(eventLogos[logoIndex]);
-        } else if (Properties.getValue("LogoIsFigure")) {
+            logo = Application.loadResource(textLogo[logoIndex]);
+        } else if (logoType == 1) {
             logoPM = 20;
             logo = Application.loadResource(figureLogos[logoIndex]);
         } else {
             logoPM = 10;
-            logo = Application.loadResource(textLogo[logoIndex]);
+            logo = Application.loadResource(eventLogos[logoIndex]);
         }
     }
 
     (:ciq1)
     function setLogo() as Void {
         // For devices without Bitmap2, LogoColor's value is an array index instead of a hex value
+        var logoType = Application.getApp().getProperty("Logo");
         var logoIndex = Application.getApp().getProperty("LogoColor");
-        if (Application.getApp().getProperty("LogoIsEvent")) {
+        if (logoType == 0) {
             logoPM = 10;
-            logo = WatchUi.loadResource(eventLogos[logoIndex]);
-        } else if (Application.getApp().getProperty("LogoIsFigure")) {
+            logo = WatchUi.loadResource(textLogo[logoIndex]);
+        } else if (logoType == 1) {
             logoPM = 20;
             logo = WatchUi.loadResource(figureLogos[logoIndex]);
         } else {
             logoPM = 10;
-            logo = WatchUi.loadResource(textLogo[logoIndex]);
+            logo = WatchUi.loadResource(eventLogos[logoIndex]);
         }
     }
 

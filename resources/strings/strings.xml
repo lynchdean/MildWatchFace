@@ -2,11 +2,14 @@
 
     <string id="AppName">MildWatchFace</string>
 
+    <string id="Logo">Logo</string>
     <string id="BackgroundColorTitle">Background Colour</string>
     <string id="TextColorTitle">Text Colour</string>
     <string id="LogoColorTitle">Logo Colour</string>
-    <string id="LogoIsFigureTitle">Alternative Logo</string>
-    <string id="LogoIsEventTitle">Use Event Logo</string>
+
+    <string id="mildTextLogo">Mild</string>
+    <string id="mildFigureLogo">Mild Figure</string>
+    <string id="emporiumLogo">Emporium Event</string>
 
     <string id="Black">Black</string>
     <string id="White">White</string>

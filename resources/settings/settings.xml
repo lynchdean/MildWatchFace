@@ -1,4 +1,11 @@
 <settings>
+    <setting propertyKey="@Properties.Logo" title="@Strings.Logo">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.mildTextLogo</listEntry>
+            <listEntry value="1">@Strings.mildFigureLogo</listEntry>
+            <listEntry value="2">@Strings.emporiumLogo</listEntry>
+        </settingConfig>
+    </setting>
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
@@ -37,14 +44,6 @@
             <listEntry value="0xFF482B">@Strings.RedPepper</listEntry>
             <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.LogoIsFigure" title="@Strings.LogoIsFigureTitle">
-        <settingConfig type="boolean" />
-    </setting>
-
-    <setting propertyKey="@Properties.LogoIsEvent" title="@Strings.LogoIsEventTitle">
-        <settingConfig type="boolean" />
     </setting>
 
     <setting propertyKey="@Properties.DeviceConnectedIndicator" title="@Strings.DeviceConnectedIndicatorTitle">
