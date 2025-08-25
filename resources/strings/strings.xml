@@ -25,6 +25,7 @@
     <string id="DeviceConnectedIndicatorTitle">Device Connected Indicator</string>
     <string id="AlarmIndicatorTitle">Alarm Set Indicator</string>
     <string id="BatteryIndicatorTitle">Battery Indicator</string>
+    <string id="disableAutomaticLogos">Disable Automatic Logos</string>
 
     <string id="Comp1Title">Complication 1</string>
     <string id="Comp2Title">Complication 2</string>

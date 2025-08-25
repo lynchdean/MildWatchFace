@@ -19,7 +19,10 @@ class MildFaceView extends WatchUi.WatchFace {
 private var logo as BitmapReference?;
     private var logoPM as Number?;
     private var iconFont;
-    
+
+    // Time based toggles
+    private var isSundayService = false;
+
     // Power/Screen management
     (:ciq2plus) private var canBurnIn, inLowPower = false;
 
@@ -69,9 +72,17 @@ private var logo as BitmapReference?;
     ];
 
     // Outline Logos for canBurnIn devices
+    (:ciq2plus)
     private var outlineLogos as Array<Lang.ResourceId> = [
         Rez.Drawables.mildLogoOutline,
         Rez.Drawables.mildFigureOutline
+    ];
+
+    private var timedLogos as Array<Lang.ResourceId> = [
+        Rez.Drawables.sundayLogo,
+        Rez.Drawables.sundayLogoWhite,
+        Rez.Drawables.sundayLogoBlack,
+        Rez.Drawables.sundayLogoRed
     ];
 
     // Implementation for devices on CIQ v2 and greater. 
@@ -87,7 +98,7 @@ private var logo as BitmapReference?;
         }
 
         // Font for status icons
-        iconFont = Application.loadResource(Rez.Fonts.icon_font);
+        iconFont = loadResource(Rez.Fonts.icon_font);
 
         if(hasComplications) {
             hrId = new Complications.Id(Complications.COMPLICATION_TYPE_HEART_RATE);
@@ -178,6 +189,8 @@ private var logo as BitmapReference?;
         } 
         var timeString = Lang.format("$1$:$2$", [hours, clockTime.min.format("%02d")]);
 
+        checkSundayService();
+
         // Get the current date and format it
         var date = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
         var dateString = Lang.format("$1$ $2$", [date.day_of_week.toUpper(), date.day]);
@@ -186,18 +199,18 @@ private var logo as BitmapReference?;
         if (canBurnIn && inLowPower) {
             dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         } else {
-            dc.setColor(Properties.getValue("BackgroundColor"), Properties.getValue("BackgroundColor"));
+            dc.setColor(getProperty("BackgroundColor"), getProperty("BackgroundColor"));
         }
         dc.clear();
 
         // Colour Settings depending on Always-On
         var logoColor;
         if (canBurnIn && inLowPower) {
-            dc.setColor(Properties.getValue("AlwaysOnColor"), Graphics.COLOR_TRANSPARENT);
-            logoColor = Properties.getValue("AlwaysOnColor") as Graphics.ColorValue;;
+            dc.setColor(getProperty("AlwaysOnColor"), Graphics.COLOR_TRANSPARENT);
+            logoColor = getProperty("AlwaysOnColor") as Graphics.ColorValue;;
         } else {
-            dc.setColor(Properties.getValue("TextColor"), Graphics.COLOR_TRANSPARENT);
-            logoColor = Properties.getValue("LogoColor") as Graphics.ColorValue;;
+            dc.setColor(getProperty("TextColor"), Graphics.COLOR_TRANSPARENT);
+            logoColor = getProperty("LogoColor") as Graphics.ColorValue;;
         }
         
         // Draw large complications and/or time and date
@@ -205,8 +218,8 @@ private var logo as BitmapReference?;
             dc.drawRadialText(centerW, centerH, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER, 90, lgR, Graphics.RADIAL_TEXT_DIRECTION_CLOCKWISE);
             dc.drawRadialText(centerW, centerH, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER, 270, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
             if (!inLowPower) {
-                dc.drawRadialText(centerW, centerH, xtFont, getCompStr(Properties.getValue("Comp1")), Graphics.TEXT_JUSTIFY_CENTER, 210, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
-                dc.drawRadialText(centerW, centerH, xtFont, getCompStr(Properties.getValue("Comp2")), Graphics.TEXT_JUSTIFY_CENTER, 330, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);                
+                dc.drawRadialText(centerW, centerH, xtFont, getCompStr(getProperty("Comp1")), Graphics.TEXT_JUSTIFY_CENTER, 210, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);
+                dc.drawRadialText(centerW, centerH, xtFont, getCompStr(getProperty("Comp2")), Graphics.TEXT_JUSTIFY_CENTER, 330, xtR, Graphics.RADIAL_TEXT_DIRECTION_COUNTER_CLOCKWISE);                
             }
         } else {
             dc.drawText(width / 2, 0, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER);
@@ -243,12 +256,14 @@ private var logo as BitmapReference?;
         var date = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
         var dateString = Lang.format("$1$ $2$", [date.day_of_week.toUpper(), date.day]);
 
+        checkSundayService();
+
         // Set background Colour
-        dc.setColor(Application.getApp().getProperty("BackgroundColor"), Application.getApp().getProperty("BackgroundColor"));
+        dc.setColor(getProperty("BackgroundColor"), getProperty("BackgroundColor"));
         dc.clear();
     
         // Small Complications
-        dc.setColor(Application.getApp().getProperty("TextColor"), Graphics.COLOR_TRANSPARENT);
+        dc.setColor(getProperty("TextColor"), Graphics.COLOR_TRANSPARENT);
         dc.drawText(width / 2, 0, lgFont, timeString, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(width / 2, height - xtFontH, xtFont, dateString, Graphics.TEXT_JUSTIFY_CENTER);
 
@@ -281,20 +296,11 @@ private var logo as BitmapReference?;
         WatchUi.requestUpdate();
     }
 
-    (:ciq2plus)
     function onSettingsChanged() {
         setLogo();
-        showDeviceConnectedIcon = Properties.getValue("DeviceConnectedIndicator");
-        showAlarmIcon = Properties.getValue("AlarmIndicator");
-        showBatteryIcon = Properties.getValue("BatteryIndicator");
-    }
-
-    (:ciq1)
-    function onSettingsChanged() {
-        setLogo();
-        showDeviceConnectedIcon = Application.getApp().getProperty("DeviceConnectedIndicator");
-        showAlarmIcon = Application.getApp().getProperty("AlarmIndicator");
-        showBatteryIcon = Application.getApp().getProperty("BatteryIndicator");
+        showDeviceConnectedIcon = getProperty("DeviceConnectedIndicator");
+        showAlarmIcon = getProperty("AlarmIndicator");
+        showBatteryIcon = getProperty("BatteryIndicator");
     }
 
     (:ciq2plus)
@@ -350,61 +356,55 @@ private var logo as BitmapReference?;
     (:hasBitmap2)
     function setLogo() as Void {
         // For devices with Bitmap2, LogoColor's value is a hex value
-        var logoType = Properties.getValue("Logo");
-        if (logoType == 0) {
-            // Text Logo
-            logoPM = 10;
-            if (canBurnIn && inLowPower) {
-                logo = Application.loadResource(outlineLogos[0]);
-            } else {
-                logo = Application.loadResource(textLogo[0]);
-            }
-        } else if (logoType == 1) {
-            // Figure Logo
-            logoPM = 20;
-            if (canBurnIn && inLowPower) {
-                logo = Application.loadResource(outlineLogos[1]);
-            } else {
-                logo = Application.loadResource(figureLogos[0]);
-            }
+        var logoType = getProperty("Logo");
+        // Automatic Sunday Service Logo
+        if (isSundayService) {
+            logoPM = 10;            
+            logo = loadResource(timedLogos[0]);
         } else {
-            // Emporium Event Logo
-            logoPM = 10;
-            logo = Application.loadResource(eventLogos[0]);
+            if (logoType == 0) {
+                // Text Logo
+                logoPM = 10;
+                if (canBurnIn && inLowPower) {
+                    logo = loadResource(outlineLogos[0]);
+                } else {
+                    logo = loadResource(textLogo[0]);
+                }
+            } else if (logoType == 1) {
+                // Figure Logo
+                logoPM = 20;
+                if (canBurnIn && inLowPower) {
+                    logo = loadResource(outlineLogos[1]);
+                } else {
+                    logo = loadResource(figureLogos[0]);
+                }
+            } else {
+                // Emporium Event Logo
+                logoPM = 10;
+                logo = loadResource(eventLogos[0]);
+            }
         }
     }
 
     (:noBitmap2)
     function setLogo() as Void {
         // For devices without Bitmap2, LogoColor's value is an array index instead of a hex value
-        var logoType = Properties.getValue("Logo");
-        var logoIndex = Properties.getValue("LogoColor");
-        if (logoType == 0) {
-            logoPM = 10;
-            logo = Application.loadResource(textLogo[logoIndex]);
-        } else if (logoType == 1) {
-            logoPM = 20;
-            logo = Application.loadResource(figureLogos[logoIndex]);
+        var logoIndex = getProperty("LogoColor");
+        if (isSundayService) {
+            logoPM = 10;            
+            logo = loadResource(timedLogos[logoIndex]);
         } else {
-            logoPM = 10;
-            logo = Application.loadResource(eventLogos[logoIndex]);
-        }
-    }
-
-    (:ciq1)
-    function setLogo() as Void {
-        // For devices without Bitmap2, LogoColor's value is an array index instead of a hex value
-        var logoType = Application.getApp().getProperty("Logo");
-        var logoIndex = Application.getApp().getProperty("LogoColor");
-        if (logoType == 0) {
-            logoPM = 10;
-            logo = WatchUi.loadResource(textLogo[logoIndex]);
-        } else if (logoType == 1) {
-            logoPM = 20;
-            logo = WatchUi.loadResource(figureLogos[logoIndex]);
-        } else {
-            logoPM = 10;
-            logo = WatchUi.loadResource(eventLogos[logoIndex]);
+            var logoType = getProperty("Logo");
+            if (logoType == 0) {
+                logoPM = 10;
+                logo = loadResource(textLogo[logoIndex]);
+            } else if (logoType == 1) { 
+                logoPM = 20;
+                logo = loadResource(figureLogos[logoIndex]);
+            } else {
+                logoPM = 10;
+                logo = loadResource(eventLogos[logoIndex]);
+            }
         }
     }
 
@@ -431,5 +431,50 @@ private var logo as BitmapReference?;
             }
         }
         return status;
+    }
+
+    function checkSundayService() as Void {
+        // Check if automatic logos are disabled
+        if (getProperty("disableAutomaticLogos")) {
+            if (isSundayService) {
+                isSundayService = false;
+                setLogo();
+            }
+            return;
+        }
+        var now = Time.now();
+        var dateShort = Time.Gregorian.info(now, Time.FORMAT_SHORT);
+        System.print(dateShort.day_of_week);
+        if (dateShort.day_of_week == 1 && dateShort.hour > 6 && dateShort.hour < 12) {
+            if (!isSundayService){
+                isSundayService = true;
+                setLogo();
+            } 
+        } else {
+            if(isSundayService){
+                isSundayService = false;
+                setLogo();
+            }
+        }
+    }
+
+    (:ciq2plus)
+    function getProperty(key as String) as Application.PropertyValueType {
+        return Properties.getValue(key);
+    }
+
+    (:ciq1)
+    function getProperty(key as String) as Application.PropertyValueType {
+        return Application.getApp().getProperty(key);
+    }
+
+    (:ciq2plus)
+    function loadResource(id as Lang.ResourceId) {
+        return Application.loadResource(id);
+    }
+
+    (:ciq1)
+    function loadResource(id as Lang.ResourceId) {
+        return WatchUi.loadResource(id);
     }
 }

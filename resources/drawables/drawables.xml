@@ -4,51 +4,67 @@
     <bitmap id="mildLogoOutline" filename="mild_logo_outline.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false"/>
     <bitmap id="mildFigure" filename="mild_figure.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false"/>
     <bitmap id="mildFigureOutline" filename="mild_figure_outline.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false"/>
-    <bitmap id="mildLogoWhite" filename="mild_logo_white.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="mildLogoWhite" filename="mild_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>FFFFFF</color>
         </palette>
     </bitmap>
-    <bitmap id="mildLogoBlack" filename="mild_logo_black.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="mildLogoBlack" filename="mild_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>000000</color>
         </palette>
     </bitmap>
-    <bitmap id="mildLogoRed" filename="mild_logo_red.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="mildLogoRed" filename="mild_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>FF0000</color>
         </palette>
     </bitmap>
-    <bitmap id="mildFigureWhite" filename="mild_figure_white.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="mildFigureWhite" filename="mild_figure.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>FFFFFF</color>
         </palette>
     </bitmap>
-    <bitmap id="mildFigureBlack" filename="mild_figure_white.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="mildFigureBlack" filename="mild_figure.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>000000</color>
         </palette>
     </bitmap>
-    <bitmap id="mildFigureRed" filename="mild_figure_white.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="mildFigureRed" filename="mild_figure.svg" scaleX="90%" scaleY="90%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>FF0000</color>
         </palette>
     </bitmap>
 
     <bitmap id="eventLogo" filename="event_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false"/>
-    <bitmap id="eventLogoWhite" filename="event_logo_white.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="eventLogoWhite" filename="event_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>FFFFFF</color>
         </palette>
     </bitmap>
-    <bitmap id="eventLogoBlack" filename="event_logo_black.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="eventLogoBlack" filename="event_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>000000</color>
         </palette>
     </bitmap>
-    <bitmap id="eventLogoGreen" filename="event_logo_green.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+    <bitmap id="eventLogoGreen" filename="event_logo.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
             <color>1b5041</color>
+        </palette>
+    </bitmap>
+    <bitmap id="sundayLogo" filename="sunday_service.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false"/>
+    <bitmap id="sundayLogoWhite" filename="sunday_service.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>FFFFFF</color>
+        </palette>
+    </bitmap>
+    <bitmap id="sundayLogoBlack" filename="sunday_service.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>000000</color>
+        </palette>
+    </bitmap>
+    <bitmap id="sundayLogoRed" filename="sunday_service.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>FF0000</color>
         </palette>
     </bitmap>
 </drawables>

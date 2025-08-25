@@ -6,9 +6,9 @@
         to update the application attributes.
     -->
     <!-- BETA ID -->
-    <iq:application id="21265c74-f31c-4483-b280-b34e3199622f" type="watchface" name="@Strings.AppName" entry="MildFaceApp" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="1.4.0">
+    <!-- <iq:application id="21265c74-f31c-4483-b280-b34e3199622f" type="watchface" name="@Strings.AppName" entry="MildFaceApp" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="1.4.0"> -->
     <!-- LIVE ID -->
-    <!-- <iq:application id="44acce66-9e60-4dda-8bab-34bd592e7f9b" type="watchface" name="@Strings.AppName" entry="MildFaceApp" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="1.4.0"> -->
+    <iq:application id="44acce66-9e60-4dda-8bab-34bd592e7f9b" type="watchface" name="@Strings.AppName" entry="MildFaceApp" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="1.4.0">
         <!--
             Use the following from the Visual Studio Code comand palette to edit
             the build targets:

@@ -56,7 +56,7 @@ venu2s.excludeAnnotations = noBitmap2;ciq1
 vivoactive5.excludeAnnotations = noBitmap2;ciq1
 
 # CIQ v1 devices
-fr45.excludeAnnotations = hasBitmap2;noBitmap2;ciq2plus
+fr45.excludeAnnotations = hasBitmap2;ciq2plus
 
 
 # -------------------------------------------------------------

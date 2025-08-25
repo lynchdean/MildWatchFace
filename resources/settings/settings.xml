@@ -58,6 +58,10 @@
         <settingConfig type="boolean" />
     </setting>
 
+    <setting propertyKey="@Properties.disableAutomaticLogos" title="@Strings.disableAutomaticLogos">
+        <settingConfig type="boolean" />
+    </setting>
+
     <setting propertyKey="@Properties.Comp1" title="@Strings.Comp1Title">
         <settingConfig type="list">
             <listEntry value="0">@Strings.None</listEntry>
