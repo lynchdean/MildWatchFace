@@ -18,9 +18,18 @@ class MildFaceApp extends Application.AppBase {
     }
 
     //! Return the initial view of your application here
+    (:noWatchFaceConfig)
     function getInitialView() {
         _view = new MildFaceView();
         return [ _view ];
+    }
+
+    //! On devices with the native watch face editor, also return a
+    //! delegate so the system can drive editor interactions.
+    (:hasWatchFaceConfig)
+    function getInitialView() {
+        _view = new MildFaceView();
+        return [ _view, new MildFaceDelegate(_view) ];
     }
 
     // New app settings have been received so trigger a UI update

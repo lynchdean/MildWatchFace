@@ -43,6 +43,7 @@ DEVICES=(
   fenix6   # mips, no bitmap2/radialtext (noBitmap2, ciq2plus)
   fr55     # mips-lesscolours (noBitmap2, ciq2plus)
   fr45     # ciq1 (noBitmap2, ciq1)
+  fenix843mm # hasWatchFaceConfig (native on-device editor)
 )
 
 fail=0

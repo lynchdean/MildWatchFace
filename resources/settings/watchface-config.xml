@@ -1,0 +1,69 @@
+<watchface-config>
+
+    <!--
+        Native on-device watch face editor (fenix 8/9 family, D2 Mach 2,
+        Enduro 3/4, fenix E, fr970, Venu 4, vivoactive 6 - see monkey.jungle
+        hasWatchFaceConfig annotation for the exact device list).
+        Mirrors the existing Properties-based settings so a config created
+        here stays consistent with the classic Garmin Connect settings page.
+    -->
+
+    <styles>
+        <style id="0" label="@Strings.mildTextLogo" default="true"/>
+        <style id="1" label="@Strings.mildFigureLogo"/>
+        <style id="2" label="@Strings.trailsLogo"/>
+        <style id="3" label="@Strings.emporiumLogo"/>
+    </styles>
+
+    <data>
+        <!-- Mirrors the Comp1 property's options -->
+        <complication id="1">
+            <type>Complications.COMPLICATION_TYPE_BATTERY</type>
+            <type>Complications.COMPLICATION_TYPE_HEART_RATE</type>
+            <type default="true">Complications.COMPLICATION_TYPE_CURRENT_TEMPERATURE</type>
+            <type>Complications.COMPLICATION_TYPE_STEPS</type>
+            <type>Complications.COMPLICATION_TYPE_CALORIES</type>
+        </complication>
+        <!-- Mirrors the Comp2 property's options -->
+        <complication id="2">
+            <type>Complications.COMPLICATION_TYPE_BATTERY</type>
+            <type>Complications.COMPLICATION_TYPE_HEART_RATE</type>
+            <type>Complications.COMPLICATION_TYPE_CURRENT_TEMPERATURE</type>
+            <type default="true">Complications.COMPLICATION_TYPE_STEPS</type>
+            <type>Complications.COMPLICATION_TYPE_CALORIES</type>
+        </complication>
+    </data>
+
+    <!-- Mirrors the TextColor property's options -->
+    <dataColors>
+        <color>0x000000</color>
+        <color default="true">0xFFFFFF</color>
+        <color>0xFFF3E5</color>
+        <color>0xD3D3CA</color>
+        <color>0xFFDDB0</color>
+        <color>0x452A25</color>
+        <color>0xFF482B</color>
+        <color>0x1B64A7</color>
+        <color>0x6D6C49</color>
+        <color>0xced1a6</color>
+        <color>0xdd6994</color>
+        <color>0x155D4F</color>
+    </dataColors>
+
+    <!-- Mirrors the LogoColor property's options -->
+    <accentColors>
+        <color>0x000000</color>
+        <color default="true">0xFFFFFF</color>
+        <color>0xFFF3E5</color>
+        <color>0xD3D3CA</color>
+        <color>0xFFDDB0</color>
+        <color>0x452A25</color>
+        <color>0xFF482B</color>
+        <color>0x1B64A7</color>
+        <color>0x6D6C49</color>
+        <color>0xced1a6</color>
+        <color>0xdd6994</color>
+        <color>0x155D4F</color>
+    </accentColors>
+
+</watchface-config>

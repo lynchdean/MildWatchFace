@@ -11,6 +11,7 @@ import Toybox.Complications;
 import Toybox.Weather;
 import Toybox.Time.Gregorian;
 import Toybox.Application;
+import Toybox.Application.WatchFaceConfig;
 
 const hasScalable = Toybox.Graphics has :getVectorFont;
 const hasComplications = Toybox has :Complications;
@@ -471,8 +472,68 @@ private var logo as BitmapReference?;
 
     function updateCachedColors() {
         cachedBackgroundColor = getProperty("BackgroundColor") as Graphics.ColorValue;
-        cachedTextColor = getProperty("TextColor") as Graphics.ColorValue;
-        cachedLogoColor = getProperty("LogoColor") as Graphics.ColorValue;
+        cachedTextColor = getTextColorSetting();
+        cachedLogoColor = getLogoColorSetting();
+    }
+
+    // Native watch face editor's "Data Color" overrides TextColor when the
+    // user has created an on-device config; otherwise falls back to the
+    // classic Properties-based setting.
+    (:hasWatchFaceConfig)
+    function getTextColorSetting() as Graphics.ColorValue {
+        if (nativeConfigSettings != null && nativeConfigSettings.complicationColor != null && nativeConfigSettings.complicationColor.color != null) {
+            return nativeConfigSettings.complicationColor.color as Graphics.ColorValue;
+        }
+        return getProperty("TextColor") as Graphics.ColorValue;
+    }
+
+    (:noWatchFaceConfig)
+    function getTextColorSetting() as Graphics.ColorValue {
+        return getProperty("TextColor") as Graphics.ColorValue;
+    }
+
+    // Native watch face editor's "Accent Color" overrides LogoColor the same way.
+    (:hasWatchFaceConfig)
+    function getLogoColorSetting() as Graphics.ColorValue {
+        if (nativeConfigSettings != null && nativeConfigSettings.accentColor != null && nativeConfigSettings.accentColor.color != null) {
+            return nativeConfigSettings.accentColor.color as Graphics.ColorValue;
+        }
+        return getProperty("LogoColor") as Graphics.ColorValue;
+    }
+
+    (:noWatchFaceConfig)
+    function getLogoColorSetting() as Graphics.ColorValue {
+        return getProperty("LogoColor") as Graphics.ColorValue;
+    }
+
+    // Native watch face editor's "Style" overrides the Logo type the same way.
+    // Only ever relevant on (:hasBitmap2) devices - every hasWatchFaceConfig
+    // device is also a hasBitmap2 device.
+    (:hasWatchFaceConfig)
+    function getLogoTypeSetting() as Number {
+        if (nativeConfigSettings != null && nativeConfigSettings.styleId != null) {
+            return nativeConfigSettings.styleId;
+        }
+        return getProperty("Logo");
+    }
+
+    (:noWatchFaceConfig)
+    function getLogoTypeSetting() as Number {
+        return getProperty("Logo");
+    }
+
+    // Caches the active native watch face config (if any) so the getters
+    // above don't call WatchFaceConfig.getSettings() on every draw.
+    (:hasWatchFaceConfig) private var nativeConfigSettings as WatchFaceConfig.Settings?;
+
+    (:hasWatchFaceConfig)
+    function refreshNativeConfig() as Void {
+        nativeConfigSettings = WatchFaceConfig.getSettings(null);
+    }
+
+    (:noWatchFaceConfig)
+    function refreshNativeConfig() as Void {
+        // No native editor on this device - nothing to read.
     }
     
     (:ciq2plus)
@@ -490,13 +551,49 @@ private var logo as BitmapReference?;
     // Update complication strings periodically to avoid recalculation on every frame
     (:ciq2plus)
     function updateCachedComplicationStrings() {
-        cachedComp1String = getCompStr(getProperty("Comp1"));
-        cachedComp2String = getCompStr(getProperty("Comp2"));
+        cachedComp1String = getCompStr(getComplicationSetting(1));
+        cachedComp2String = getCompStr(getComplicationSetting(2));
         lastCompUpdate = Time.now().value();
     }
-    
+
+    // Native watch face editor's Data slots (uniqueIdentifier 1/2, matching
+    // resources/settings/watchface-config.xml) override Comp1/Comp2 when a
+    // user-created on-device config is active.
+    (:hasWatchFaceConfig)
+    function getComplicationSetting(slotId as Number) as Number {
+        if (nativeConfigSettings != null && nativeConfigSettings.complicationSettings != null) {
+            var refs = nativeConfigSettings.complicationSettings;
+            for (var i = 0; i < refs.size(); i++) {
+                var ref = refs[i];
+                if (ref.uniqueIdentifier == slotId && ref.complicationId != null) {
+                    var n = complicationIdToNumber(ref.complicationId);
+                    if (n != null) {
+                        return n;
+                    }
+                }
+            }
+        }
+        return getProperty(slotId == 1 ? "Comp1" : "Comp2");
+    }
+
+    (:hasWatchFaceConfig)
+    function complicationIdToNumber(id as Complications.Id) as Number? {
+        if (id.equals(new Complications.Id(Complications.COMPLICATION_TYPE_BATTERY))) { return 1; }
+        if (id.equals(new Complications.Id(Complications.COMPLICATION_TYPE_HEART_RATE))) { return 2; }
+        if (id.equals(new Complications.Id(Complications.COMPLICATION_TYPE_CURRENT_TEMPERATURE))) { return 3; }
+        if (id.equals(new Complications.Id(Complications.COMPLICATION_TYPE_STEPS))) { return 4; }
+        if (id.equals(new Complications.Id(Complications.COMPLICATION_TYPE_CALORIES))) { return 5; }
+        return null;
+    }
+
+    (:noWatchFaceConfig)
+    function getComplicationSetting(slotId as Number) as Number {
+        return getProperty(slotId == 1 ? "Comp1" : "Comp2");
+    }
+
     function onSettingsChanged() {
         // Always check Sunday service state when settings change to ensure correct logo
+        refreshNativeConfig();
         checkSundayService();
         setLogo();
         updateCachedColors();
@@ -575,7 +672,7 @@ private var logo as BitmapReference?;
     (:hasBitmap2)
     function setLogo() as Void {
         // For devices with Bitmap2, LogoColor's value is a hex value
-        var logoType = getProperty("Logo");
+        var logoType = getLogoTypeSetting();
         var newLogoId;
         var logoPositionFactor = 10; // Default for most logos
         

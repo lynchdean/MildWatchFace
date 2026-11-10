@@ -6,77 +6,77 @@ project.manifest = manifest.xml
 # ------------------------------------------------------------------
 
 # Covers the rest of devices without Bitmap2 and without RadialText and >= CIQ v2
-base.excludeAnnotations = hasBitmap2;ciq1
+base.excludeAnnotations = hasBitmap2;ciq1;hasWatchFaceConfig
 
 # Devices with Bitmap2 & Radial Text
-epix2.excludeAnnotations = noBitmap2;ciq1
-epix2pro42mm.excludeAnnotations = noBitmap2;ciq1
-epix2pro47mm.excludeAnnotations = noBitmap2;ciq1
-epix2pro51mm.excludeAnnotations = noBitmap2;ciq1
+epix2.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+epix2pro42mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+epix2pro47mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+epix2pro51mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
 
-fenix7.excludeAnnotations = noBitmap2;ciq1
-fenix7pro.excludeAnnotations = noBitmap2;ciq1
-fenix7pronowifi.excludeAnnotations = noBitmap2;ciq1
-fenix7s.excludeAnnotations = noBitmap2;ciq1
-fenix7spro.excludeAnnotations = noBitmap2;ciq1
-fenix7x.excludeAnnotations = noBitmap2;ciq1
-fenix7xpro.excludeAnnotations = noBitmap2;ciq1
-fenix7xpronowifi.excludeAnnotations = noBitmap2;ciq1
-fenix843mm.excludeAnnotations = noBitmap2;ciq1
-fenix847mm.excludeAnnotations = noBitmap2;ciq1
-fenix8solar47mm.excludeAnnotations = noBitmap2;ciq1
-fenix8solar51mm.excludeAnnotations = noBitmap2;ciq1
-fenixe.excludeAnnotations = noBitmap2;ciq1
+fenix7.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7pro.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7pronowifi.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7s.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7spro.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7x.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7xpro.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix7xpronowifi.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fenix843mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix847mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix8solar47mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix8solar51mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenixe.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-fr165.excludeAnnotations = noBitmap2;ciq1
-fr165m.excludeAnnotations = noBitmap2;ciq1
-fr265.excludeAnnotations = noBitmap2;ciq1
-fr265s.excludeAnnotations = noBitmap2;ciq1
-fr57042mm.excludeAnnotations = noBitmap2;ciq1
-fr57047mm.excludeAnnotations = noBitmap2;ciq1
-fr955.excludeAnnotations = noBitmap2;ciq1
-fr965.excludeAnnotations = noBitmap2;ciq1
-fr970.excludeAnnotations = noBitmap2;ciq1
+fr165.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr165m.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr265.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr265s.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr57042mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr57047mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr955.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr965.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr970.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-venu3.excludeAnnotations = noBitmap2;ciq1
-venu3s.excludeAnnotations = noBitmap2;ciq1
-venu441mm.excludeAnnotations = noBitmap2;ciq1
-venu445mm.excludeAnnotations = noBitmap2;ciq1
+venu3.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+venu3s.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+venu441mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+venu445mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-vivoactive6.excludeAnnotations = noBitmap2;ciq1
+vivoactive6.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-d2mach2.excludeAnnotations = noBitmap2;ciq1
-d2mach2pro.excludeAnnotations = noBitmap2;ciq1
+d2mach2.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+d2mach2pro.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-enduro3.excludeAnnotations = noBitmap2;ciq1
-enduro4.excludeAnnotations = noBitmap2;ciq1
+enduro3.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+enduro4.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-fenix8pro47mm.excludeAnnotations = noBitmap2;ciq1
-fenix943mm.excludeAnnotations = noBitmap2;ciq1
-fenix947mm.excludeAnnotations = noBitmap2;ciq1
-fenix9pro43mm.excludeAnnotations = noBitmap2;ciq1
-fenix9pro47mm.excludeAnnotations = noBitmap2;ciq1
-fenix9pro51mm.excludeAnnotations = noBitmap2;ciq1
-fenix9prosolar47mm.excludeAnnotations = noBitmap2;ciq1
-fenix9prosolar51mm.excludeAnnotations = noBitmap2;ciq1
+fenix8pro47mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix943mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix947mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix9pro43mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix9pro47mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix9pro51mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix9prosolar47mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
+fenix9prosolar51mm.excludeAnnotations = noBitmap2;ciq1;noWatchFaceConfig
 
-instinct3amoled45mm.excludeAnnotations = noBitmap2;ciq1
-instinct3amoled50mm.excludeAnnotations = noBitmap2;ciq1
+instinct3amoled45mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+instinct3amoled50mm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
 
 # Devices with Bitmap2 but not Radial Text
-fr255.excludeAnnotations = noBitmap2;ciq1
-fr255m.excludeAnnotations = noBitmap2;ciq1
-fr255s.excludeAnnotations = noBitmap2;ciq1
-fr255sm.excludeAnnotations = noBitmap2;ciq1
+fr255.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr255m.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr255s.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+fr255sm.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
 
-venu2.excludeAnnotations = noBitmap2;ciq1
-venu2plus.excludeAnnotations = noBitmap2;ciq1
-venu2s.excludeAnnotations = noBitmap2;ciq1
+venu2.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+venu2plus.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
+venu2s.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
 
-vivoactive5.excludeAnnotations = noBitmap2;ciq1
+vivoactive5.excludeAnnotations = noBitmap2;ciq1;hasWatchFaceConfig
 
 # CIQ v1 devices
-fr45.excludeAnnotations = hasBitmap2;ciq2plus
+fr45.excludeAnnotations = hasBitmap2;ciq2plus;hasWatchFaceConfig
 
 
 # -------------------------------------------------------------
