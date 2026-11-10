@@ -1,0 +1,24 @@
+name: Validate resources
+
+# Deliberately does NOT use the Connect IQ SDK or compile the app: every
+# compile requires authenticating to Garmin to fetch the SDK fresh (its
+# license forbids redistributing it), and Garmin's SSO has a history of
+# rejecting automated/non-browser sign-in. Storing Garmin account
+# credentials in this repo's secrets isn't worth that risk.
+#
+# Instead this just does static checks that need no SDK: XML
+# well-formedness and dangling-resource-reference detection. For a real
+# compile check across representative devices, run scripts/compile-check.sh
+# locally with your own installed SDK before a release (see README).
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-resources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check resource references and XML validity
+        run: python3 scripts/check_resource_refs.py
