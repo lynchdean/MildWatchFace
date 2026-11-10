@@ -36,34 +36,34 @@
 
     <!-- Mirrors the TextColor property's options -->
     <dataColors>
-        <color>0x000000</color>
-        <color default="true">0xFFFFFF</color>
-        <color>0xFFF3E5</color>
-        <color>0xD3D3CA</color>
-        <color>0xFFDDB0</color>
-        <color>0x452A25</color>
-        <color>0xFF482B</color>
-        <color>0x1B64A7</color>
-        <color>0x6D6C49</color>
-        <color>0xced1a6</color>
-        <color>0xdd6994</color>
-        <color>0x155D4F</color>
+        <color label="@Strings.Black">0x000000</color>
+        <color label="@Strings.White" default="true">0xFFFFFF</color>
+        <color label="@Strings.WhiteDrop">0xFFF3E5</color>
+        <color label="@Strings.GreyWhey">0xD3D3CA</color>
+        <color label="@Strings.LightLatte">0xFFDDB0</color>
+        <color label="@Strings.RoastedUmber">0x452A25</color>
+        <color label="@Strings.RedPepper">0xFF482B</color>
+        <color label="@Strings.TrailsBlue">0x1B64A7</color>
+        <color label="@Strings.TrailsGreen">0x6D6C49</color>
+        <color label="@Strings.TrailsLightGreen">0xced1a6</color>
+        <color label="@Strings.TrailsPink">0xdd6994</color>
+        <color label="@Strings.EmporiumGreen">0x155D4F</color>
     </dataColors>
 
     <!-- Mirrors the LogoColor property's options -->
     <accentColors>
-        <color>0x000000</color>
-        <color default="true">0xFFFFFF</color>
-        <color>0xFFF3E5</color>
-        <color>0xD3D3CA</color>
-        <color>0xFFDDB0</color>
-        <color>0x452A25</color>
-        <color>0xFF482B</color>
-        <color>0x1B64A7</color>
-        <color>0x6D6C49</color>
-        <color>0xced1a6</color>
-        <color>0xdd6994</color>
-        <color>0x155D4F</color>
+        <color label="@Strings.Black">0x000000</color>
+        <color label="@Strings.White" default="true">0xFFFFFF</color>
+        <color label="@Strings.WhiteDrop">0xFFF3E5</color>
+        <color label="@Strings.GreyWhey">0xD3D3CA</color>
+        <color label="@Strings.LightLatte">0xFFDDB0</color>
+        <color label="@Strings.RoastedUmber">0x452A25</color>
+        <color label="@Strings.RedPepper">0xFF482B</color>
+        <color label="@Strings.TrailsBlue">0x1B64A7</color>
+        <color label="@Strings.TrailsGreen">0x6D6C49</color>
+        <color label="@Strings.TrailsLightGreen">0xced1a6</color>
+        <color label="@Strings.TrailsPink">0xdd6994</color>
+        <color label="@Strings.EmporiumGreen">0x155D4F</color>
     </accentColors>
 
 </watchface-config>
