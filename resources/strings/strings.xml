@@ -10,6 +10,7 @@
     <string id="mildTextLogo">Mild</string>
     <string id="mildFigureLogo">Mild Figure</string>
     <string id="emporiumLogo">Emporium Event</string>
+    <string id="trailsLogo">Mild Trails</string>
 
     <string id="Black">Black</string>
     <string id="White">White</string>
@@ -19,6 +20,10 @@
     <string id="RoastedUmber">Roasted Umber</string>
     <string id="RedPepper">Red Pepper</string>
     <string id="Red">Red</string>
+    <string id="TrailsBlue">Trails Blue</string>
+    <string id="TrailsGreen">Trails Green</string>
+    <string id="TrailsLightGreen">Trails Light Green</string>
+    <string id="TrailsPink">Trails Pink</string>
     <string id="EmporiumGreen">Emporium Green</string>
     <string id="AlternativeColour">Alternative Colour (Red, or Green for Event)</string>
 

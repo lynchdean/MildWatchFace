@@ -3,7 +3,8 @@
         <settingConfig type="list">
             <listEntry value="0">@Strings.mildTextLogo</listEntry>
             <listEntry value="1">@Strings.mildFigureLogo</listEntry>
-            <listEntry value="2">@Strings.emporiumLogo</listEntry>
+            <listEntry value="2">@Strings.trailsLogo</listEntry>
+            <listEntry value="3">@Strings.emporiumLogo</listEntry>
         </settingConfig>
     </setting>
 
@@ -16,6 +17,10 @@
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
             <listEntry value="0xFF482B">@Strings.RedPepper</listEntry>
+            <listEntry value="0x1B64A7">@Strings.TrailsBlue</listEntry>
+            <listEntry value="0x6D6C49">@Strings.TrailsGreen</listEntry>
+            <listEntry value="0xced1a6">@Strings.TrailsLightGreen</listEntry>
+            <listEntry value="0xdd6994">@Strings.TrailsPink</listEntry>
             <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
@@ -28,7 +33,11 @@
             <listEntry value="0xD3D3CA">@Strings.GreyWhey</listEntry>
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
-            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry> 
+            <listEntry value="0xFF482B">@Strings.RedPepper</listEntry>
+            <listEntry value="0x1B64A7">@Strings.TrailsBlue</listEntry>
+            <listEntry value="0x6D6C49">@Strings.TrailsGreen</listEntry>
+            <listEntry value="0xced1a6">@Strings.TrailsLightGreen</listEntry>
+            <listEntry value="0xdd6994">@Strings.TrailsPink</listEntry>
             <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>
@@ -42,6 +51,10 @@
             <listEntry value="0xFFDDB0">@Strings.LightLatte</listEntry>
             <listEntry value="0x452A25">@Strings.RoastedUmber</listEntry>
             <listEntry value="0xFF482B">@Strings.RedPepper</listEntry>
+            <listEntry value="0x1B64A7">@Strings.TrailsBlue</listEntry>
+            <listEntry value="0x6D6C49">@Strings.TrailsGreen</listEntry>
+            <listEntry value="0xced1a6">@Strings.TrailsLightGreen</listEntry>
+            <listEntry value="0xdd6994">@Strings.TrailsPink</listEntry>
             <listEntry value="0x155D4F">@Strings.EmporiumGreen</listEntry>
         </settingConfig>
     </setting>

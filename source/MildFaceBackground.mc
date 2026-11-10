@@ -3,26 +3,7 @@
 // Subject to Garmin SDK License Agreement and Wearables
 // Application Developer Agreement.
 //
-import Toybox.WatchUi;
-import Toybox.Application;
-import Toybox.Graphics;
-
-//! Drawable to update the background
-class Background extends WatchUi.Drawable {
-
-    //! Constructor
-    function initialize() {
-        var dictionary = {
-            :identifier => "Background"
-        };
-
-        Drawable.initialize(dictionary);
-    }
-
-    //! Draws the background
-    function draw(dc as Dc) as Void {
-        // Set the background color then call to clear the screen
-        dc.setColor(Graphics.COLOR_TRANSPARENT, Properties.getValue("BackgroundColor"));
-        dc.clear();
-    }
-}
+// This file is kept for compatibility purposes but its functionality
+// has been moved into MildFaceView.mc to improve performance.
+// The Background class is no longer needed since background drawing
+// is handled directly in the onUpdate method.

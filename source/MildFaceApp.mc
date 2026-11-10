@@ -7,24 +7,14 @@ import Toybox.Application;
 import Toybox.WatchUi;
 import Toybox.Lang;
 
-//! App class for the TypedFace
+//! App class for the Mild Watch Face
 class MildFaceApp extends Application.AppBase {
 
-    var _view;
+    private var _view;
 
     //! Constructor
     function initialize() {
         AppBase.initialize();
-    }
-
-    //! onStart() is called on application start up
-    //! @param state Start parameters
-    function onStart(state as Dictionary?) {
-    }
-
-    //! onStop() is called when your application is exiting
-    //! @param state Stop parameters
-    function onStop(state as Dictionary?) {
     }
 
     //! Return the initial view of your application here

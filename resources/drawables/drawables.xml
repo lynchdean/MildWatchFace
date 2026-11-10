@@ -51,6 +51,7 @@
             <color>1b5041</color>
         </palette>
     </bitmap>
+
     <bitmap id="sundayLogo" filename="sunday_service.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false"/>
     <bitmap id="sundayLogoWhite" filename="sunday_service.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
         <palette>
@@ -67,4 +68,22 @@
             <color>FF0000</color>
         </palette>
     </bitmap>
+
+    <bitmap id="trailsLogo" filename="mild_trails.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false"/>
+    <bitmap id="trailsLogoWhite" filename="mild_trails.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>FFFFFF</color>
+        </palette>
+    </bitmap>
+    <bitmap id="trailsLogoBlack" filename="mild_trails.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>000000</color>
+        </palette>
+    </bitmap>
+    <bitmap id="trailsLogoRed" filename="mild_trails.svg" scaleX="80%" scaleY="80%" scaleRelativeTo="screen" automaticPalette="false">
+        <palette>
+            <color>FF0000</color>
+        </palette>
+    </bitmap>
+
 </drawables>
